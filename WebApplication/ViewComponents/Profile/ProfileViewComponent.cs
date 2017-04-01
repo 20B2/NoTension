@@ -12,9 +12,8 @@ namespace WebApplication.ViewComponents.Profile
     [ViewComponent(Name = "Profile")]
     public class ProfileViewComponent : ViewComponent
     {
-
       
-        public async Task<IViewComponentResult> Invoke()
+        public IViewComponentResult Invoke()
         {            
             return View();
         }

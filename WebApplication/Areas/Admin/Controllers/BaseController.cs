@@ -11,6 +11,7 @@ using WebApplication.Infrastructure;
 
 namespace WebApplication.Controllers
 {
+    [Area("Admin")]
     public class BaseController : Controller
     {
         public BaseController(UserManager<IdentityUser> userManager

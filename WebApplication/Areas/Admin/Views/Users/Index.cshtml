@@ -1,4 +1,7 @@
-﻿@model PaginationSet<Identity.IdentityUser>
+﻿@using WebApplication.Infrastructure.ViewModels
+@using WebApplication.Identity
+@using WebApplication.Core.Domains
+@model PaginatedList<IdentityUser>
 
 @{
     ViewData["Title"] = "Users";

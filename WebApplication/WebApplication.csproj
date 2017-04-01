@@ -38,6 +38,7 @@
     <None Include="ViewComponents\Profile\ProfileViewComponent.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Shared\Components\Profile\" />
   </ItemGroup>
 

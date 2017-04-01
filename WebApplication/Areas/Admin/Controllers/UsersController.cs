@@ -17,8 +17,8 @@ using WebApplication.Core.Domains;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles ="Admin")]
-    [BsonIgnoreExtraElements]
+    [Area("Admin")]
+    //[Authorize(Roles ="Admin")]
     public class UsersController : BaseController
     {
         private readonly ILogger _logger;

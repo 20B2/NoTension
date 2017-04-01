@@ -16,7 +16,8 @@ using WebApplication.Services;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    //[Authorize(Roles = "Admin")]
+    [Area("Admin")]
     public class RolesController : BaseController
     {
         private readonly RoleManager<IdentityRole> _roleManager;

@@ -16,6 +16,7 @@
 //namespace WebApplication.Areas.Admin.Controllers
 //{
 //    [Authorize(Roles = "Admin")]
+//[Area("Admin")]
 //    public class MessageTemplateController : Controller
 //    {
 //        public MessageTemplateController(IMessageRepository messageRepository)
