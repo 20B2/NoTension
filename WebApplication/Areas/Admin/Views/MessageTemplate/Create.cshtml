@@ -1,0 +1,80 @@
+﻿@model WebApplication.Data.MessageTemplate
+
+@{ 
+    ViewBag.Title = "Message Template";
+}
+
+<script src="~/ckeditor/ckeditor.js"></script>
+
+
+<div class="panel mb25">
+    <div class="panel-heading border">
+        Create Message Template
+    </div>
+    <div class="panel-body">
+        <div class="row no-margin">
+            <div class="col-lg-12">
+                <form asp-action="Create" class="form-horizontal bordered-group" role="form">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                   
+
+                    <div class="form-group">
+                        <label asp-for="MessageTemplateTypeID" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MessageTemplateTypeID" class="form-control" />
+                            <span asp-validation-for="MessageTemplateTypeID" class="text-danger" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="MailFrom" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="MailFrom" class="form-control" />
+                            <span asp-validation-for="MailFrom" class="text-danger" />
+                        </div>
+                    </div>
+                    
+                    
+                     <div class="form-group">
+                        <label asp-for="Subject" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                            <input asp-for="Subject" class="form-control" />
+                            <span asp-validation-for="Subject" class="text-danger" />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Body" class="col-sm-2 control-label"></label>
+                        <div class="col-sm-10">
+                              <textarea asp-for="Body" id="editor1" name="editor1"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">CKEDITOR.replace('editor1');</script>
+
+
+
+@section Breadcrumbs {
+    <ol class="breadcrumb">
+        <li>
+            <a asp-controller="Dashboard" asp-action="Index">Home</a>
+        </li>
+        <li>
+            <a asp-controller="MessageTemplate" asp-action="Index">Mesaage Template</a>
+        </li>
+        <li class="active">
+            <a href="javascript:;">Create</a>
+        </li>
+    </ol>
+}

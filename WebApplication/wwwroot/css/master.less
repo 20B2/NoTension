@@ -1,0 +1,332 @@
+﻿@navcolor: #403b6b;
+@navfocuscolor: #272444;
+@bodybgcolor: rgba(184, 195, 210, 0.46) ;
+
+.affix {
+    top: 0px;
+    width: 100%;
+    z-index: 1;
+}
+.navbar {
+    border: none;
+    border-radius: 0px 0px 0px 0px;
+    background-color: @navcolor;
+    box-shadow: 0px 8px 50px 0px;
+
+    ul {
+        li {
+            &:hover, &:focus, &:active {
+                background-color: @navfocuscolor !important;
+            }
+
+            button {
+                text-decoration: none !important;
+            }
+        }
+    }
+
+    .navbar-nav {
+        .open {
+            a {
+                &:hover, &:focus, &:active {
+                    background-color: @navfocuscolor !important;
+                }
+            }
+        }
+    }
+}
+
+.dropdown {
+    .dropdown-menu {
+        background-color: @navcolor;
+        box-shadow: 0px 8px 50px 0px;
+
+        li {
+            padding: 5px;
+            min-width: 150px;
+            text-align: center;
+
+            a {
+            }
+        }
+
+        .divider {
+            padding: 0px !important;
+        }
+    }
+}    
+/*ng-nav*/
+.ng-nav {
+    background-color: @navcolor;
+    width: 100%;
+    padding: 10px;
+    margin-top: -20px;
+    margin-bottom: 10px;
+
+
+    a {
+        text-decoration: none;
+        color: white;
+        text-transform: full-width;
+        margin-right: 15px;
+
+        &:hover {
+            color: #e6e4e4;
+        }
+    }
+}
+    /*ng-nav-end*/
+
+/*body*/
+body {
+    background-color: @bodybgcolor;
+}
+/*body end*/
+/*bg float*/
+
+.bg-float {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: -100;
+
+    li {
+        position: absolute;
+        list-style: none;
+        display: block;
+        width: 40px;
+        height: 40px;
+        background-color: rgba(184, 195, 210, 0.46);
+        bottom: -160px;
+        animation: bg-square 250s infinite;
+
+        &:hover {
+            background-color: rgba(184, 195, 210, 0.46);
+        }
+
+        &:nth-child(1) {
+            left: 10%;
+            bottom: -160px;
+        }
+
+        &:nth-child(2) {
+            left: 18%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 1s;
+            animation-duration: 500s;
+            bottom: -900px;
+        }
+
+        &:nth-child(3) {
+            left: 27%;
+            width: 35px;
+            height: 35px;
+            animation-delay: 1s;
+            animation-duration: 600s;
+            bottom: -800px;
+        }
+
+        &:nth-child(4) {
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation-delay: 1s;
+            animation-duration: 300s;
+            bottom: -700px;
+        }
+
+        &:nth-child(5) {
+            left: 40%;
+            width: 20px;
+            height: 20px;
+            animation-delay: 1s;
+            animation-duration: 200s;
+            bottom: -500px;
+        }
+
+        &:nth-child(6) {
+            left: 50%;
+            width: 35px;
+            height: 35px;
+            animation-delay: 1s;
+            animation-duration: 100s;
+            bottom: -600px;
+        }
+
+        &:nth-child(7) {
+            left: 65%;
+            width: 60px;
+            height: 60px;
+            animation-delay: 1s;
+            animation-duration: 400s;
+            bottom: -100px;
+        }
+
+        &:nth-child(8) {
+            left: 75%;
+            width: 75px;
+            height: 75px;
+            animation-delay: 1s;
+            animation-duration: 600s;
+            bottom: -150px;
+        }
+
+        &:nth-child(9) {
+            left: 83%;
+            width: 80px;
+            height: 80px;
+            animation-delay: 1s;
+            animation-duration: 700s;
+            bottom: -300px;
+        }
+
+        &:nth-child(10) {
+            left: 90%;
+            width: 10px;
+            height: 10px;
+            animation-delay: 1s;
+            animation-duration: 100s;
+            bottom: -200px;
+        }
+
+        @keyframes bg-square {
+            0% {
+                transform: translateY(0)
+            }
+
+            100% {
+                transform: translateY(-1000px) rotate(600deg);
+            }
+        }
+    }
+}
+
+/*bg float end*/
+
+
+/*profile*/
+.some-info {
+    color: #418ba9;
+    border: 1px solid #7dc4e1;
+    padding: 10px;
+    background-color: #b9dbe9;
+    i{
+      margin-left:3em;
+    }
+}
+/*profile-setting-menu*/
+.setting-menu, .setting-menu-detail {
+    background-color: rgb(244, 244, 245);
+    color: @navfocuscolor;
+    margin-top: 10px;
+    padding: 0px;
+
+    .setting-title, .setting-detail-title {
+        border-bottom: 2px solid @bodybgcolor;
+        margin-left: 0px;
+        padding: 15px;
+        font-size: medium;
+    }
+
+    .setting-menu-name {
+        li {
+            padding: 10px;
+            list-style: none;
+
+            &:hover, &:active, &:focus, &:visited {
+                background-color: #d8d8de;
+            }
+
+            a {
+                text-decoration: none;
+                color: @navfocuscolor;
+            }
+        }
+    }
+
+
+    .setting-detail {
+
+        .setting-detail-detail {
+            padding: 0px;
+
+            li {
+                padding: 15px;
+                list-style: none;
+
+                .profilePic {
+                    text-align:center;
+                    padding:5px;
+                    height: 100px;
+                    width: 100px;
+                    border: 1px dotted @navfocuscolor;
+                }
+            }
+        .profilePicUpload{
+            position:relative;
+            .profilePic{
+               
+                width:25%;
+                height:100px;
+                width:100px;
+                border: 1px groove;
+            }
+            .profilePicUploadInfo{
+                position:absolute;
+                width:75%;
+                top:30%;
+                
+            }
+        }
+        }
+    }
+        
+}
+/*profile-setting-menu-end*/
+/*profile end*/
+
+
+/*post panel*/
+
+.post-panel {
+    padding: 15px;
+    background-color: white;
+
+    .post-panel-body {
+        .post-pic {
+            display: none;
+        }
+
+        .post-area {
+
+            textarea {
+                min-width: 100%;
+                border: 2px solid @navfocuscolor;
+
+
+                &:focus > &:active > .postpanel {
+                   .post-panel-body{
+                       div.post-pic{
+                           display:block !important;
+                       }
+                   }
+                }
+
+                &:focus, &:active {
+                    min-height: 70px;
+                }
+            }
+        }
+    }
+}
+
+
+// li:hover>ul.drop-menu li
+/*pst panel end*/
+
+.display-block{
+    display:block !important;
+}
