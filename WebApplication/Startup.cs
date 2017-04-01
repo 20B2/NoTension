@@ -26,6 +26,7 @@ using WebApplication.Infrastructure.Interface.Repository;
 using WebApplication.Infrastructure.ViewModels;
 using WebApplication.Infrastructure.Interface.Services;
 using WebMarkupMin.AspNetCore1;
+using WebApplication.Helpers;
 
 namespace WebApplication
 {
@@ -80,6 +81,7 @@ namespace WebApplication
             services.AddSingleton<IFeedItemRepository, FeedItemRepository>();
             services.AddSingleton<IFeedItemService, FeedItemService>();
             services.AddSingleton<IProfileService, ProfileService>();
+            services.AddSingleton<SeedDataHelper>();
             
             services.AddMvc();
             
@@ -113,7 +115,7 @@ namespace WebApplication
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SeedDataHelper seed)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -162,6 +164,7 @@ namespace WebApplication
                     ConsumerSecret = "fF4cdlcMxeDrvZJFLRZAj7SDkQt7NYBetewCzbJzRxUUbPCMmO"
                 });
 
+            seed.Initialize();
 
             app.Use(async (context, next) =>
             {
@@ -188,9 +191,7 @@ namespace WebApplication
                 routes.MapRoute(
                      name: "api",
                      template: "api/{controller=Home}/{action=Index}/{id?}");
-
-
-
+                                
             });
         }
 

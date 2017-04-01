@@ -71,20 +71,18 @@ namespace WebApplication.Controllers
 
             if (ModelState.IsValid)
             {
-                var user = await _userManager.FindByNameAsync(model.Email);
+                var user = await _userManager.FindByNameAsync(model.UserName);
 
-                //if (user != null)
-                //{
-                //    if (!await _userManager.IsEmailConfirmedAsync(user))
-                //    {
-                //        ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
-                //        return View(model);
-                //    }
-                //}
+                if (user != null)
+                {
+                    if (!await _userManager.IsEmailConfirmedAsync(user))
+                    {
+                        ModelState.AddModelError(string.Empty, "You must have a confirmed email to log in.");
+                        return View(model);
+                    }
+                }
 
-                // This doesn't count login failures towards account lockout
-                // To enable password failures to trigger account lockout, set lockoutOnFailure: true
-                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, lockoutOnFailure: true);
+                var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, lockoutOnFailure: true);
 
                 if (result.Succeeded)
                 {
@@ -100,12 +98,11 @@ namespace WebApplication.Controllers
                     if (await _userManager.IsInRoleAsync(user, "Admin"))
                     {
                         _logger.LogInformation(1, "Admin User logged in.");
-                        return RedirectToAction("Index", "Dashboard");
+                         return RedirectToAction("Admin","Dashboard","Index");
                     }
 
                     _logger.LogInformation(1, "User logged in.");
-                    return RedirectToAction("Index", "Home");
-                    //return RedirectToLocal(returnUrl);
+                     return RedirectToLocal(returnUrl);
                 }
                 if (result.RequiresTwoFactor)
                 {

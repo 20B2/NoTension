@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,10 @@ using WebApplication.Core.Domains.StatusType;
 using WebApplication.Data;
 using WebApplication.Infrastructure.Interface.Repository;
 
-namespace WebApplication.Controllers
+namespace WebApplication.Areas.Admin.Controllers
 {
+    [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class StatusTypeController : Controller
     {
       private readonly IStatusTypeRepository _statusTypeRepository;

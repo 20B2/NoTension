@@ -18,7 +18,7 @@ using WebApplication.Core.Domains;
 namespace WebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    //[Authorize(Roles ="Admin")]
+    [Authorize(Roles ="Admin")]
     public class UsersController : BaseController
     {
         private readonly ILogger _logger;
@@ -38,76 +38,9 @@ namespace WebApplication.Areas.Admin.Controllers
 
    
         }
-        public IActionResult Index( int page=1)
-        {
-            //int pageSize = 3;
-
-            //P<IdentityUser> pagedSet = null;
-
-            //int currentPage = page;
-            //int currentPageSize = pageSize;
-
-            //List<IdentityUser> _users = null;
-            //int _totalusers = new int();
-
-            //var u = _userManager.Users.ToList();
-
-            //_users = u
-            //    .OrderBy(p => p.UserName)
-            //    .Skip(((currentPage) * currentPageSize)- currentPage)
-            //            .Take(currentPageSize)
-            //    .ToList();
-
-            //var item = _users;
-            //_totalusers = _userManager.Users.Count();
-
-            //pagedSet = new PaginationSet<IdentityUser>()
-            //{
-            //    Page = currentPage,
-            //    TotalCount = _totalusers,
-            //    TotalPages = (int)Math.Ceiling(_totalusers / (double)currentPageSize),
-            //    Items = item
-            //};
-
-            //ViewBag.Roles = _roleManager.Roles.ToList().ToListViewModel();
-
-            return View();
-        }
 
 
-        public IActionResult Index1()
-        {
-            return View(_userStore.Users.ToList());
-        }
-
-        public async Task<IActionResult> Search(string searchString)
-        {
-            var user =  _userManager.Users;
-
-            List<IdentityUser> u =  user.ToList();//.ToListViewModel();
-
-            IEnumerable<string> IQueryItem = from m in u
-                       orderby m.UserName
-                       select m.UserName;
-
-            var item = from m in u
-                       select m;
-            
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                item = item.Where(s => s.UserName.Contains(searchString));
-            }
-
-            var userVM = new UserSearchViewModel()
-            {
-                //userVM.selectList = new SelectList(IQueryItem.Distinct().ToList());
-                Users = item.ToList()
-            };
-            return View(userVM);
-        }
-
-
-        public async Task<IActionResult> Default(
+        public async Task<IActionResult> Index(
             string sortOrder,
             string currentFilter,
             string searchString,
@@ -209,8 +142,7 @@ namespace WebApplication.Areas.Admin.Controllers
         {
 
             if (ModelState.IsValid)
-            {
-                 
+            {                 
                 var user = await _userManager.FindByIdAsync(model.Id);
 
                 if (user == null)

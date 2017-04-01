@@ -9,7 +9,7 @@ using WebApplication.Infrastructure.Interface.Services;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
     public class DashboardController : Controller
     {

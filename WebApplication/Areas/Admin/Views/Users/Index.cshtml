@@ -1,131 +1,84 @@
 ﻿@using WebApplication.Infrastructure.ViewModels
-@using WebApplication.Identity
 @using WebApplication.Core.Domains
-@model PaginatedList<IdentityUser>
-
+@model PaginatedList<UserAdminViewModel>
 @{
-    ViewData["Title"] = "Users";
-    var RolesVM = ViewBag.Roles as List<RoleViewModel>;
-
+    ViewData["Title"] = "Users ";
 }
+<h2>Users | Total Page : @Model.TotalPages, @Model.Count</h2>
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
 
-
-<div class="panel mb25">
-    <div class="panel-heading">
-        <span>Users | Total Users: @Model.TotalCount</span>
-        <span class="pull-right">
-            <a asp-action="Create">Create New</a>
-        </span>
+<form asp-action="Default" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Find by name: <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            <input type="submit" value="Search" class="btn btn-default btn" /> |
+            <a asp-action="Default">Back to Full List</a>
+        </p>
     </div>
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped mb0">
-                <thead>
-                    <tr>
-                        <th>
-                            <label asp-for="@Model.Items[0].UserName"></label>
-                          
-                        </th>
-                        <th>
-                            <label asp-for="@Model.Items[0].Email"></label>
-                        
-                        </th>
-                        <th>
-                            <label asp-for="@Model.Items[0].Roles"></label>
-                            
-                        </th>
-                        <th>
-                          <label>Email Confirmed</label>
-                            
-                        </th>
-                        <th>
-                           <label> Last Logins</label>
-                           
-                        </th>
-                        <th>
-                           <lable>Action</lable>
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.Items)
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                User Name
+            </th>
+            <th>
+                <a asp-action="Default" asp-route-sortOrder="@ViewData["NameSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Email</a>
+            </th>
+            <th>
+                <a asp-action="Default" asp-route-sortOrder="@ViewData["DateSortParm"]" asp-route-currentFilter="@ViewData["CurrentFilter"]">Created On</a>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+
+                    @*@foreach (var role in item.RoleNames)
                     {
-                        <tr class="text-center">
-                            <td>
-                       
-                                @*@Model.Items[0].UserName.ToString()*@
-                               @Html.DisplayFor(modelItem => item.UserName)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td>
+                            @Html.DisplayFor(modelItem => role)
 
-                                @foreach (var role in item.Roles)
-                                {
-                                    @foreach (var rolesVM in RolesVM)
-                                    {
-
-                                        @if (role.Id != null && role.Id.Contains(rolesVM.Id))
-                                        {
-                                            @Html.DisplayFor(modelItem => rolesVM.Name) <br />
-
-                                        }
-                                    }
-
-                                    @*@Html.DisplayFor(modelItem => role.Id) <br />*@
-                                }
-                            </td>
-
-
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.EmailConfirmed)
-                            </td>
-
-                            <td>
-                                @Html.DisplayFor(modelItem => item.UserActivities.LastOrDefault().TimeStamp)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Edit"><i class="fa fa-edit"></i></a>
-                                &nbsp;
-                                <a asp-action="Details" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Details"><i class="fa fa-eye"></i></a>
-                                &nbsp;
-                                <a asp-action="Delete" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Delete"><i class="fa fa-trash"></i></a>
-                                &nbsp;
-                                <a asp-action="ChangePassword" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Change Password"><i class="fa fa-key"></i></a>
-
-
-
-                            </td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-Page @Model.Page of @Model.TotalPages
-    
-
-<cs-pager cs-paging-pagesize="@Model.Count"
-          cs-paging-pagenumber="@Model.Page"
-          cs-paging-totalitems="@Model.TotalCount"
-          cs-pagenumber-param="page"
-          asp-controller="Users"
-          asp-action="Index">
-</cs-pager>
-
-
-@section Breadcrumbs {
-    <ol class="breadcrumb">
-        <li>
-            <a asp-controller="Dashboard" asp-action="Index">Home</a>
-        </li>
-
-        <li class="active">
-            <a href="javascript:;">Users</a>
-        </li>
-    </ol>
+                    }*@
+                    
+                    
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@{
+    var prevDisabled = !Model.HasPreviousPage ? "disabled" : "";
+    var nextDisabled = !Model.HasNextPage ? "disabled" : "";
 }
+
+<a asp-action="Default"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex - 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @prevDisabled btn">
+    Previous
+</a>
+<a asp-action="Default"
+   asp-route-sortOrder="@ViewData["CurrentSort"]"
+   asp-route-page="@(Model.PageIndex + 1)"
+   asp-route-currentFilter="@ViewData["CurrentFilter"]"
+   class="btn btn-default @nextDisabled btn">
+    Next
+</a>
