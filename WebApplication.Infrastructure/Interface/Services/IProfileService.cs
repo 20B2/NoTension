@@ -9,6 +9,6 @@ namespace WebApplication.Infrastructure.Interface.Services
 {
     public interface IProfileService
     {
-        Task<ProfileViewModel> GetProfileViewModel();
+        ProfileViewModel GetProfileViewModel();
     }
 }

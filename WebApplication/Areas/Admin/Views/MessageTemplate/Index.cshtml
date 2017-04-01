@@ -1,11 +1,8 @@
-﻿@model List<WebApplication.Data.MessageTemplate>
+﻿@model List<WebApplication.Core.Domains.MessageTemplate.MessageTemplate>
 
 @{
     ViewData["Title"] = "Message Template";
 }
-
-
-
 
 <div class="panel">
     <div class="panel-heading">
@@ -43,11 +40,11 @@
                             <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
                             
                             <td>
-                                <a asp-action="Edit" asp-route-id="@item._id" data-toggle=tooltip data-placement=top title="Edit"><i class="fa fa-edit"></i></a>
+                                <a asp-action="Edit" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Edit"><i class="fa fa-edit"></i></a>
                                 &nbsp;
-                                <a asp-action="Details" asp-route-id="@item._id" data-toggle=tooltip data-placement=top title="Details"><i class="fa fa-eye"></i></a>
+                                <a asp-action="Details" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Details"><i class="fa fa-eye"></i></a>
                                 &nbsp;
-                                <a asp-action="Delete" asp-route-id="@item._id" data-toggle=tooltip data-placement=top title="Delete"><i class="fa fa-trash"></i></a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" data-toggle=tooltip data-placement=top title="Delete"><i class="fa fa-trash"></i></a>
                             </td>
                         </tr>
                     }
@@ -57,7 +54,7 @@
     </div>
 </div>
 
-@section Breadcrumbs {
+@section Breadcrumbs{
     <ol class="breadcrumb">
         <li>
             <a asp-controller="Dashboard" asp-action="Index">Home</a>

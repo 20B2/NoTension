@@ -154,7 +154,9 @@ namespace WebApplication.Identity
             try
             {
                 ConfigureDefaults(user);
+#pragma warning disable CS0618 // Type or member is obsolete
                 await DatabaseContext.UserCollection.InsertOneAsync(user, cancellationToken);
+#pragma warning restore CS0618 // Type or member is obsolete
             }
             catch (MongoWriteException)
             {

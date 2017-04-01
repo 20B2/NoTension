@@ -22,9 +22,7 @@ namespace WebApplication.Areas.Admin.Controllers
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly ILogger _logger;
-        private readonly UserStore<IdentityUser, IdentityRole> _users;
-
-
+     
         public RolesController(
            UserManager<IdentityUser> userManager,         
            RoleManager<IdentityRole> roleManager,

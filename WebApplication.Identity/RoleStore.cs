@@ -4,18 +4,11 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using MongoDB.Driver;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Security.Claims;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
-namespace  WebApplication.Identity
+namespace WebApplication.Identity
 {
     public class RoleStore<TUser, TRole> : RoleStore<TUser, TRole, string>
        where TUser : IdentityUser<string>

@@ -27,6 +27,8 @@ using WebApplication.Infrastructure.ViewModels;
 using WebApplication.Infrastructure.Interface.Services;
 using WebMarkupMin.AspNetCore1;
 using WebApplication.Helpers;
+using NLog.Extensions.Logging;
+using NLog.Web;
 
 namespace WebApplication
 {
@@ -71,7 +73,7 @@ namespace WebApplication
             services.AddSingleton<UserStore<IdentityUser, IdentityRole>>();
 
             //services.AddSingleton<IMongoDbManager, MongoDbManager>();
-
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddSingleton<IMessageRepository, MessageRepository>();
@@ -118,8 +120,9 @@ namespace WebApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SeedDataHelper seed)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
+            loggerFactory.AddNLog();
             loggerFactory.AddDebug();
-
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
@@ -132,6 +135,8 @@ namespace WebApplication
                 app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
             }
+            app.AddNLogWeb();
+            env.ConfigureNLog("nlog.config");
 
             app.UseStaticFiles();
             
@@ -164,7 +169,7 @@ namespace WebApplication
                     ConsumerSecret = "fF4cdlcMxeDrvZJFLRZAj7SDkQt7NYBetewCzbJzRxUUbPCMmO"
                 });
 
-            seed.Initialize();
+          //seed.Initialize();
 
             app.Use(async (context, next) =>
             {
@@ -191,7 +196,15 @@ namespace WebApplication
                 routes.MapRoute(
                      name: "api",
                      template: "api/{controller=Home}/{action=Index}/{id?}");
-                                
+
+                routes.MapRoute(
+                     name: "feed",
+                     template: "feed/{controller=Feed}/{action=Index}/{id?}");
+                
+                routes.MapRoute(
+                     name: "profile",
+                     template: "profile/{controller=Profile}/{action=Index}/{id?}");
+
             });
         }
 

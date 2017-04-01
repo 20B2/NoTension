@@ -1,12 +1,10 @@
-﻿@model WebApplication.Data.MessageTemplate
+﻿@model WebApplication.Core.Domains.MessageTemplate.MessageTemplate
 
 @{ 
     ViewBag.Title = "Message Template";
 }
 
-<script src="~/ckeditor/ckeditor.js"></script>
-
-
+<script src="~/lib/ckeditor/ckeditor.js"></script>
 <div class="panel mb25">
     <div class="panel-heading border">
         Create Message Template
@@ -61,7 +59,31 @@
     </div>
 </div>
 
-<script type="text/javascript">CKEDITOR.replace('editor1');</script>
+
+<script>
+     CKEDITOR.replace('editor1', {
+        customConfig: false,
+        toolbarGroups: [
+            { name: 'clipboard', groups: ['clipboard', 'undo'] },
+            { name: 'editing', groups: ['find', 'selection', 'spellchecker'] },
+            { name: 'forms' },
+            { name: 'basicstyles', groups: ['basicstyles', 'cleanup'] },
+            { name: 'paragraph', groups: ['list', 'indent', 'blocks', 'align', 'bidi'] },
+            { name: 'links' },
+            { name: 'insert' },
+            { name: 'styles' },
+            { name: 'colors' },
+            { name: 'tools' },
+            { name: 'others' },
+            { name: 'document', groups: ['mode', 'document', 'doctools'] },
+            { name: 'about' }
+        ],
+        removeButtons: 'Cut,Copy,Paste,Anchor,Underline,Strike,Subscript,Superscript',
+        removeDialogTabs: 'link:advanced',
+        removePlugins: 'a11yhelp,bidi,panelbutton,colorbutton,colordialog,menu,contextmenu,dialogadvtab,div,entities,popup,filebrowser,find,flash,floatingspace,font,forms,htmlwriter,iframe,indentblock,liststyle,magicline,newpage,pagebreak,pastefromword,pastetext,preview,print,resize,save,menubutton,scayt,selectall,showblocks,showborders,smiley,specialchar,tab,table,tabletools,templates,wsc',
+        height: 300
+    });
+</script>
 
 
 

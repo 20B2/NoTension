@@ -1,0 +1,80 @@
+﻿@*<div class="container">
+    <div class="some-info" data-id="some-info">
+        You will get some information here
+        <i class="pull-right fa fa-close" data-dismiss="some-info"></i>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-4 col-md-3">
+            <ul class="setting-menu">
+                <div class="setting-title">
+                    Profile Setting
+                </div>
+
+                <div class="setting-menu-name">
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Notifications</a></li>
+                </div>
+
+            </ul>
+            <ul class="setting-menu">
+                <div class="setting-title">
+                    Profile Setting
+                </div>
+
+                <div class="setting-menu-name">
+                    <li><a href="#">General</a></li>
+                    <li><a href="#">Security</a></li>
+                    <li><a href="#">Privacy</a></li>
+                    <li><a href="#">Notifications</a></li>
+                </div>
+
+            </ul>
+        </div>
+
+        <div class="col-xs-8 col-md-9">
+            <div class="setting-menu-detail">
+                <div class="setting-detail-title">
+                    General Setting
+                </div>
+
+                <div class="setting-detail">
+                    <ul class="setting-detail-detail">
+                        <li class="profilePicUpload">
+                            <div class="profilePic">
+                                100x100
+                            </div>
+                            <span class="profilePicUploadInfo">
+                                asafdadf
+                            </span>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</div>*@
+
+
+<div class="col-md-12">
+    <div class="nav-tabs-custom">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="#general" class="tabNav" id="info" data-toggle="tab">General</a></li>
+            <li role="presentation"><a href="#security" class="tabNav" id="item" data-toggle="tab">Security</a></li>
+        </ul>
+        <!-- Tab panes -->
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane" id="general">
+                @await  Html.PartialAsync("_General")
+            </div>
+            <div role="tabpanel" class="tab-pane" id="general">
+                     @await Html.PartialAsync("_Security")
+            </div>
+        </div>
+    </div> 
+</div> 

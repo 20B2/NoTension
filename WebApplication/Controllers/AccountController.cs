@@ -98,7 +98,7 @@ namespace WebApplication.Controllers
                     if (await _userManager.IsInRoleAsync(user, "Admin"))
                     {
                         _logger.LogInformation(1, "Admin User logged in.");
-                         return RedirectToAction("Admin","Dashboard","Index");
+                         return RedirectToAction("Index","Dashboard",new { Area = "Admin" });
                     }
 
                     _logger.LogInformation(1, "User logged in.");

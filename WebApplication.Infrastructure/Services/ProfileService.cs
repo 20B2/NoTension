@@ -19,7 +19,7 @@ namespace WebApplication.Infrastructure.Services
             _user = user;
         }
         
-        public async  Task<ProfileViewModel> GetProfileViewModel()
+        public  ProfileViewModel GetProfileViewModel()
         {
            
             return new ProfileViewModel

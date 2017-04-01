@@ -1,4 +1,4 @@
-﻿s<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,7 +6,7 @@
     <title>@ViewData["Title"] - NoTension</title>
 
     <environment names="Development">
-            
+
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
 
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
@@ -18,10 +18,8 @@
 
         <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/master.css" />
-
-        <base href="/" />
-
-
+        <link href="~/css/admin.css" rel="stylesheet" />
+     
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -34,54 +32,45 @@
         <link rel="stylesheet" href="~/css/master.css" />
     </environment>
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix">
-        <div class="container">
-
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BrainApp</a>
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
-                </ul>
-            
-            </div>
+<body class="hold-transition skin-blue sidebar-mini">
+    
+    <div class="wrapper">
+        <!-- Main Header -->
+        @await Html.PartialAsync("_TopMenu")
+        <!-- Left side column. contains the logo and sidebar -->
+        @await Html.PartialAsync("_LeftMenu")
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
+                <h1>
+                    @ViewData["ContentHeader"]
+                    <small>@await RenderSectionAsync("headerLeftOptional", required: false)</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
+                    <li class="active">Here</li>
+                </ol>
+            </section>
+            <section class="content-header clearfix">
+                <div class="pull-left">
+                    @await RenderSectionAsync("actionHeader", required: false)
+                </div>
+            </section>
+            <!-- Main content -->
+            <section class="content">
+                <!-- Your Page Content Here -->
+                @RenderBody()
+            </section>
+            <!-- /.content -->
         </div>
-
-
+        <!-- /.content-wrapper -->
+        <!-- Main Footer -->
+        @await Html.PartialAsync("_Footer")
     </div>
-
-    <div class="">
-        @RenderBody()
-
-    </div>
-
-    <environment names="Development">
-        <script src="~/lib/jquery/dist/jquery.min.js"></script>
-        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
-        <script src="~/js/site.js" asp-append-version="true"></script>
-
-    </environment>
-    <environment names="Staging,Production">
-        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
-                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
-                asp-fallback-test="window.jQuery">
-        </script>
-        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
-                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
-                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
-        </script>
-        <script src="~/js/site.min.js" asp-append-version="true"></script>
-    </environment>
-
+    <!-- ./wrapper -->
+    @RenderSection("Breadcrumbs", required: false)
+    @RenderSection("menu", required: false)
     @RenderSection("scripts", required: false)
-    @RenderSection("Breadcrumbs",required:false)
-</body>
+  </body>
 </html>
