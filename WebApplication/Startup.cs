@@ -84,6 +84,7 @@ namespace WebApplication
             services.AddSingleton<IFeedItemService, FeedItemService>();
             services.AddSingleton<IProfileService, ProfileService>();
             services.AddSingleton<SeedDataHelper>();
+            services.AddSingleton<IProfileSettingViewModelService, ProfileSettingViewModelService>();
             
             services.AddMvc();
 

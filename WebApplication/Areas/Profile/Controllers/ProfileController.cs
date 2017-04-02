@@ -12,6 +12,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebApplication.Core;
 using WebApplication.Identity;
+using WebApplication.Infrastructure.Interface.Services;
 using WebApplication.Infrastructure.ViewModels.ProfileViewModels;
 
 namespace WebApplication.Areas.Profile.Controllers
@@ -25,23 +26,31 @@ namespace WebApplication.Areas.Profile.Controllers
         private readonly UserStore<IdentityUser, IdentityRole> _users;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
+        private readonly IProfileViewModelService _profileVMService;
 
         public ProfileController(IHostingEnvironment environment,
             UserStore<IdentityUser, IdentityRole> users,
             UserManager<IdentityUser> userManager,
-            IMapper mapper)
+            IMapper mapper,
+            IProfileViewModelService profileVMService)
         {
             _environment = environment;
             _users = users;
             _userManager = userManager;
             _mapper = mapper;
+            _profileVMService = profileVMService;
         }
+
         [Route("[action]")]
+
         public IActionResult Index()
-        {           
+        {
+            //return profieVM
+            
             return View();
 
         }
+
         [Route("[action]")]
         public async Task<ActionResult> Edit()
         {

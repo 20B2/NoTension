@@ -42,6 +42,7 @@
   <ItemGroup>
     <None Include="Areas\Admin\Views\Shared\_Footer.cshtml" />
     <None Include="Areas\Admin\Views\Shared\_TopMenu.cshtml" />
+    <None Include="Areas\Profile\ViewComponents\SecurityViewComponent.cs" />
   </ItemGroup>
 
 </Project>

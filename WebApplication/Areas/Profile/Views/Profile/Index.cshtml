@@ -1,2 +1,7 @@
-﻿
+﻿@*@using WebApplication.Infrastructure.ViewModels.ProfileViewModels.ProfileViewModel*@
+@using WebApplication.Infrastructure.Interface.Services
+
+@inject IProfileViewModelService profileVMService;
+
 @await Component.InvokeAsync("Profile")
+
