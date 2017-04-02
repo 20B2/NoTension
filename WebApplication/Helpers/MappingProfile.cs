@@ -5,7 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WebApplication.Core.Domains.Feed;
+using WebApplication.Identity;
+using WebApplication.Infrastructure.ViewModels;
 using WebApplication.Infrastructure.ViewModels.FeedViewModels;
+using WebApplication.Infrastructure.ViewModels.ProfileViewModels;
 
 namespace WebApplication.Helpers
 {
@@ -15,6 +18,16 @@ namespace WebApplication.Helpers
         {
             CreateMap<FeedItem, FeedBoxViewModel>();
             CreateMap<FeedItem, FeedPostViewModel>();
+            CreateMap<FeedItem, IndexViewModel>();
+
+            CreateMap<IdentityUser, UserViewModel>();
+            CreateMap<IdentityRole, RoleViewModel>();
+
+            CreateMap<IdentityUser, AccountSettingViewModel>();
+            CreateMap<IdentityUser, ProfileViewModel>().ReverseMap(); ;
+            CreateMap<IdentityUser, EditProfileViewModel>().ReverseMap();
+               
+
 
         }
         

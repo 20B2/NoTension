@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
@@ -17,33 +18,34 @@ namespace WebApplication.Areas.Profile.Controllers
 {
     [Authorize()]
     [Area("Profile")]
+    [Route("Profile")]
     public class ProfileController : Controller
     {
         private readonly IHostingEnvironment _environment;
-        protected readonly UserStore<IdentityUser, IdentityRole> _users;
-        protected readonly UserManager<IdentityUser> _userManager;
+        private readonly UserStore<IdentityUser, IdentityRole> _users;
+        private readonly UserManager<IdentityUser> _userManager;
+        private readonly IMapper _mapper;
+
         public ProfileController(IHostingEnvironment environment,
             UserStore<IdentityUser, IdentityRole> users,
-            UserManager<IdentityUser> userManager)
+            UserManager<IdentityUser> userManager,
+            IMapper mapper)
         {
             _environment = environment;
             _users = users;
             _userManager = userManager;
+            _mapper = mapper;
         }
-
+        [Route("[action]")]
         public IActionResult Index()
         {           
             return View();
 
         }
-
-        public async Task<ActionResult> Edit(string id)
+        [Route("[action]")]
+        public async Task<ActionResult> Edit()
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
+           
             var user = await GetCurrentUserAsync();
 
             if (user == null)
@@ -51,22 +53,9 @@ namespace WebApplication.Areas.Profile.Controllers
                 return NotFound();
             }
 
-            var model = new EditProfileViewModel
-            {
-                Id = await _users.GetUserIdAsync(user),
-                UserName = await _users.GetUserNameAsync(user),
-                Email = await _users.GetEmailAsync(user),
-                PhoneNumber = await _users.GetPhoneNumberAsync(user),
-                FirstName = _users.GetFirstName(user),
-                LastName = _users.GetLastName(user),
-                DateOfBirth = _users.GetDateOfBirth(user),
-                BirthCountry = _users.GetBirthCountry(user),
-                CurrentCountry = _users.GetCurrentCountry(user),
-               // Image = _users.GetImage(user),
-               // Roles = _users.GetRolesAsync(user),
-            };
+            var editprofileVM= _mapper.Map<IdentityUser, EditProfileViewModel>(user);
 
-            return View(model);
+            return View(editprofileVM);
 
            }
 
@@ -83,11 +72,12 @@ namespace WebApplication.Areas.Profile.Controllers
                     return NotFound();
                 }
 
-                var userRoles = await _users.GetRolesAsync(user);
+                //var userRoles = await _users.GetRolesAsync(user);
 
-
+                var userRoles = await _userManager.GetRolesAsync(user);
                 await _users.SetFirstNameAsync(user, editUser.FirstName);
                 await _users.SetLastNameAsync(user, editUser.LastName);
+                
                 // await _users.SetUserNameAsync(user, editUser.UserName);
                 // await _users.SetEmailAsync(user, editUser.Email);
                 await _users.SetBirthCountryAsync(user, editUser.BirthCountry);
@@ -96,11 +86,10 @@ namespace WebApplication.Areas.Profile.Controllers
                 //await _users.SetDateOfBirthAsync(user, editUser.DateOfBirth);
 
                 var result = await _users.UpdateAsync(user);
-
-
+                
                 if (!result.Succeeded)
                 {
-                    ModelState.AddModelError("","result.Errors.First()");
+                    ModelState.AddModelError(string.Empty,"result.Errors.First()");
                     return View();
                 }
                 return RedirectToAction("Index");
@@ -157,10 +146,7 @@ namespace WebApplication.Areas.Profile.Controllers
             return RedirectToAction("Index");
         }
 
-
-
-
-        // POST: /ImageManager/UploadImages
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> UploadImages()

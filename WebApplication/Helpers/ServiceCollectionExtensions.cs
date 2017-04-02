@@ -26,30 +26,10 @@ namespace WebApplication.Helpers
             this IServiceCollection services)
         {
             //services.AddTransient<IMongoDbManager, MongoDbManager>();
-
-          
+                      
             return services;
         }
-
-
-    //    private static void AddAutoMapperClasses(IServiceCollection services,
-    //          Action<IMapperConfigurationExpression> additionalInitAction,
-    //          IEnumerable<Assembly> assembliesToScan)
-    //    {
-       
-    //    Mapper.Initialize(cfg =>
-    //    {
-    //        additionalInitAction(cfg);
-
-    //        foreach (var profile in profiles)
-    //        {
-    //            cfg.AddProfile(profile);
-    //        }
-    //    });
         
-    //}
-
-
     }
 
 }

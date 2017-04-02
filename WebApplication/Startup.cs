@@ -47,7 +47,7 @@ namespace WebApplication
             _env = env;
             MapperConfiguration = new MapperConfiguration(cfg =>
             {
-               // cfg.AddProfile(new AutoMapperProfileConfiguration());
+                cfg.AddProfile(new MappingProfile());
             });
 
 
@@ -86,7 +86,7 @@ namespace WebApplication
             services.AddSingleton<SeedDataHelper>();
             
             services.AddMvc();
-            
+
             services.AddAutoMapper(typeof(Startup));
 
             services.AddSingleton(sp => MapperConfiguration.CreateMapper());
@@ -146,8 +146,7 @@ namespace WebApplication
             });
 
             app.UseWebMarkupMin();
-
-
+                        
             app.UseStatusCodePages();
 
             app.UseCookieAuthentication();
@@ -169,7 +168,7 @@ namespace WebApplication
                     ConsumerSecret = "fF4cdlcMxeDrvZJFLRZAj7SDkQt7NYBetewCzbJzRxUUbPCMmO"
                 });
 
-          //seed.Initialize();
+             seed.Initialize();
 
             app.Use(async (context, next) =>
             {
@@ -200,10 +199,10 @@ namespace WebApplication
                 routes.MapRoute(
                      name: "feed",
                      template: "feed/{controller=Feed}/{action=Index}/{id?}");
-                
+
                 routes.MapRoute(
                      name: "profile",
-                     template: "profile/{controller=Profile}/{action=Index}/{id?}");
+                     template: "profile/{controller=Profile}/{action=Index}");
 
             });
         }
