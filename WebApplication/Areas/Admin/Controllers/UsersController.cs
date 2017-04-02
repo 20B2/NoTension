@@ -19,6 +19,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles ="Admin")]
+    [Route("Users/[action]")]
     public class UsersController : BaseController
     {
         private readonly ILogger _logger;

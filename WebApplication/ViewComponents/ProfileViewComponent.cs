@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using WebApplication.Infrastructure.Interface.Services;
 using WebApplication.Infrastructure.Services;
 
-namespace WebApplication.Areas.Profile.ViewComponents
+namespace WebApplication.ViewComponents
 {
     [ViewComponent(Name = "Profile")]
     public class ProfileViewComponent : ViewComponent

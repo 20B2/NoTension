@@ -9,16 +9,17 @@ namespace WebApplication.Core.Domains.Feed
 {
     public class FeedItem : BaseEntity
     {
-        public bool IsPublished { get; set; }
+        public bool IsPublished { get; set; } = true;
+        public string StatusType { get; set; }
 
         public FeedItemType Type { get; set; }
         public string Text { get; set; }
 
-        public string OperationStatus { get; set; }
+        public string OperationStatus { get; set; } = $"Process";
 
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}",
              ApplyFormatInEditMode = true)]
-        public DateTimeKind PublishedDate { get; set; } = DateTimeKind.Utc;
+        public DateTimeOffset PublishedDate { get; set; } = DateTimeOffset.UtcNow;
 
         public string PublishedUserId { get; set; } // need fill this userid
 
@@ -33,6 +34,22 @@ namespace WebApplication.Core.Domains.Feed
 
         public string PreciseTextByUserId { get; set; }
         //public List<PreciseHistory> History { get; set; }
+
+
+        public int LikesCounts { get { return Likes.Count; } }
+
+
+        public int CommentsCounts{ get { return Comments.Count;} }
+
+
+        public string UpdatedAgo { get { return ((DateTimeOffset.Now) - (PublishedDate)).ToString(); } }
+
+        //public bool IsLikedByMe()
+        //{
+        //    (Likes.Contains(Like)) ? true : false;
+                    
+
+        //}
 
 
     }

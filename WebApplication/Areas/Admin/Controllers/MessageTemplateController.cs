@@ -1,12 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebApplication.Core.Domains.MessageTemplate;
 using WebApplication.Infrastructure.Interface.Repository;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
+    [Route("Admin")]
+    
     public class MessageTemplateController : Controller
     {
         public MessageTemplateController(IMessageRepository messageRepository)
@@ -15,20 +18,20 @@ namespace WebApplication.Areas.Admin.Controllers
         }
 
         protected readonly IMessageRepository _messageRepository;
-
+        [Route("[action]")]
         public async Task<IActionResult> Index()
         {
             var item = await _messageRepository.FindAll();
 
             return View(item);
         }
-
+        [Route("[action]")]
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Route("[action]")]
         [HttpPost]
         public IActionResult Create(MessageTemplate model)
         {
@@ -52,7 +55,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-
+        [Route("[action]")]
         public async Task<IActionResult> Details(string id)
         {
 
@@ -70,7 +73,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-
+        [Route("[action]")]
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -86,7 +89,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-
+        [Route("[action]")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MessageTemplate model)
@@ -111,7 +114,7 @@ namespace WebApplication.Areas.Admin.Controllers
             return View();
         }
 
-
+        [Route("[action]")]
         public async Task<IActionResult> Delete(string id)
         {
 
@@ -129,7 +132,7 @@ namespace WebApplication.Areas.Admin.Controllers
             return View(queryresult);
         }
 
-
+        [Route("[action]")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

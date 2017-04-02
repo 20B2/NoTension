@@ -19,7 +19,7 @@ namespace WebApplication.Helpers
             CreateMap<FeedItem, FeedBoxViewModel>();
             CreateMap<FeedItem, FeedPostViewModel>();
             CreateMap<FeedItem, IndexViewModel>();
-
+            CreateMap<FeedPostViewModel, FeedItem>().ReverseMap();
             CreateMap<IdentityUser, UserViewModel>();
             CreateMap<IdentityRole, RoleViewModel>();
 

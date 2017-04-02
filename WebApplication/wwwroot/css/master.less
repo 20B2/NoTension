@@ -1,12 +1,13 @@
 ﻿@navcolor: #403b6b;
 @navfocuscolor: #272444;
-@bodybgcolor: rgba(184, 195, 210, 0.46) ;
+@bodybgcolor: rgba(184, 195, 210, 0.46);
 
 .affix {
     top: 0px;
     width: 100%;
     z-index: 1;
 }
+
 .navbar {
     border: none;
     border-radius: 0px 0px 0px 0px;
@@ -54,7 +55,7 @@
             padding: 0px !important;
         }
     }
-}    
+}
 /*ng-nav*/
 .ng-nav {
     background-color: @navcolor;
@@ -75,7 +76,7 @@
         }
     }
 }
-    /*ng-nav-end*/
+/*ng-nav-end*/
 
 /*body*/
 body {
@@ -213,8 +214,9 @@ body {
     border: 1px solid #7dc4e1;
     padding: 10px;
     background-color: #b9dbe9;
-    i{
-      margin-left:3em;
+
+    i {
+        margin-left: 3em;
     }
 }
 /*profile-setting-menu*/
@@ -258,75 +260,165 @@ body {
                 list-style: none;
 
                 .profilePic {
-                    text-align:center;
-                    padding:5px;
+                    text-align: center;
+                    padding: 5px;
                     height: 100px;
                     width: 100px;
                     border: 1px dotted @navfocuscolor;
                 }
             }
-        .profilePicUpload{
-            position:relative;
-            .profilePic{
-               
-                width:25%;
-                height:100px;
-                width:100px;
-                border: 1px groove;
+
+            .profilePicUpload {
+                position: relative;
+
+                .profilePic {
+                    width: 25%;
+                    height: 100px;
+                    width: 100px;
+                    border: 1px groove;
+                }
+
+                .profilePicUploadInfo {
+                    position: absolute;
+                    width: 75%;
+                    top: 30%;
+                }
             }
-            .profilePicUploadInfo{
-                position:absolute;
-                width:75%;
-                top:30%;
-                
-            }
-        }
         }
     }
-        
 }
 /*profile-setting-menu-end*/
 /*profile end*/
 
 
 /*post panel*/
-
-.post-panel {
-    padding: 15px;
+.tn-post-row{
+    padding-top:15px;
+    padding-bottom:12px;
     background-color: white;
+    border-radius: 5px 5px 0px 0px;
+    .tn-profile-photo{
+        height:30px;
+        width:30px;
+        border:1px solid black;
+    }
+    .tn-profile-textarea{
+        
+    }
+   
+}
+.tn-textarea {
+    min-width: 100%;
+    min-height: 20px;
+    border:none;
 
-    .post-panel-body {
-        .post-pic {
-            display: none;
+    &:focus, &:active {
+        min-height: 80px;
+    }
+    
+}
+.tn-post-type-selection {
+    span {
+        select {
+            padding: 5px;
+            border:none;
         }
+    }
+}
+ul.tn-add-info {
+    background-color: @navcolor;
+    margin-left: -15px;
+    margin-right: -15px;
+    list-style-type: none;
+  
+    overflow:hidden;
+    
+  
 
-        .post-area {
+    li {
+        float: left;
+        padding:10px;
+        &:hover{
+            background-color:@navfocuscolor;
+        }
+        a {
+            color:white;
+            display: block;
+            text-decoration: none;
+        }
+        button{
+            background-color:transparent;
+            border:none;
+            color:white;
+        }
+    }
+}
+/*pst panel end*/
 
-            textarea {
-                min-width: 100%;
-                border: 2px solid @navfocuscolor;
-
-
-                &:focus > &:active > .postpanel {
-                   .post-panel-body{
-                       div.post-pic{
-                           display:block !important;
-                       }
-                   }
-                }
-
-                &:focus, &:active {
-                    min-height: 70px;
-                }
+/*post feed panel*/
+.tn-feed-row {
+    background-color: white;
+    padding-bottom:0px;
+   
+    .tn-feed-data {
+        background-color: @navcolor;
+        margin-left:0px;
+        padding-bottom:0px;
+        li {
+            padding: 10px;
+            color:white;
+            list-style:none;
+            &:hover {
+               
             }
+
+            
         }
+    }
+}
+.tn-post-text {
+    margin-top: -7px;
+    padding: 15px;
+
+    .tn-status-text {
+        text-align: justify;
     }
 }
 
 
-// li:hover>ul.drop-menu li
-/*pst panel end*/
+.tn-feed-data-footer {
+    background-color: @navcolor;
+    margin-left: -15px;
+    margin-right: -15px;
+    box-shadow: black 0px 8px 50px 0px;
 
-.display-block{
-    display:block !important;
+    li {
+        padding: 10px;
+        color: white;
+        list-style: none;
+
+        &:hover {
+            background-color: @navfocuscolor;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+        }
+    }
 }
+/*post feed panel end*/
+
+/*tool tip*/
+
+/*tool-tip*/
+
+
+
+/*to be deleted*/
+.photo{
+    width:80px;
+    height:80px;
+    border:1px solid grey;
+}
+/*to be deleted end*/

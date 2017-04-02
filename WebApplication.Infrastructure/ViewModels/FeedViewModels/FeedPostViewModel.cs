@@ -8,6 +8,7 @@ namespace WebApplication.Infrastructure.ViewModels.FeedViewModels
 {
     public class FeedPostViewModel
     {
+        public string StatusType { get; set; }
         public string Text { get; set; }
 
     }

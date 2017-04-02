@@ -197,13 +197,13 @@ namespace WebApplication
                      name: "api",
                      template: "api/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                     name: "feed",
-                     template: "feed/{controller=Feed}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //     name: "feed",
+                //     template: "feed/{controller=Feed}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                     name: "profile",
-                     template: "profile/{controller=Profile}/{action=Index}");
+                //routes.MapRoute(
+                //     name: "profile",
+                //     template: "profile/{controller=Profile}/{action=Index}");
 
             });
         }

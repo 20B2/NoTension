@@ -1,0 +1,48 @@
+@model WebApplication.Core.Domains.Feed.FeedItem
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>FeedItem</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsPublished)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.StatusType)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OperationStatus)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAgo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishedDate)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.LikesCounts)
+            @Html.DisplayFor(model => model.CommentsCounts)
+            @Html.DisplayFor(model => model.Image)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PublishedUserId)
+        </dt>
+     </dl>
+</div>
+
+@foreach (var comment in Model.Comments)
+{
+    @comment.Text
+    @comment.Time
+}
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

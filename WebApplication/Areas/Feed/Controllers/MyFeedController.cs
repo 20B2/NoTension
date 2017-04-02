@@ -8,8 +8,13 @@ using System.Threading.Tasks;
 namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
+    [Route("Feed")]
     public class MyFeedController : Controller
     {
+        public IActionResult Index()
+        {
+            return View();
+        }
         
     }
 }

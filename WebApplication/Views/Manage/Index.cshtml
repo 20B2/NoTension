@@ -7,13 +7,7 @@
 
 <p class="text-success">@ViewData["StatusMessage"]</p>
 
-
-
-
-
-
-<h3><i class="fa fa-square"></i> Change Your Account Setting</h3>
-<div>
+@*<div>
 
     <hr />
     <div class="form-horizontal">
@@ -90,4 +84,6 @@
 
 
     </div>
-</div>
+</div>*@
+
+@await Component.InvokeAsync("Profile")

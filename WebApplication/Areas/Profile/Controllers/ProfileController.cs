@@ -26,19 +26,17 @@ namespace WebApplication.Areas.Profile.Controllers
         private readonly UserStore<IdentityUser, IdentityRole> _users;
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IMapper _mapper;
-        private readonly IProfileViewModelService _profileVMService;
-
+     
         public ProfileController(IHostingEnvironment environment,
             UserStore<IdentityUser, IdentityRole> users,
             UserManager<IdentityUser> userManager,
-            IMapper mapper,
-            IProfileViewModelService profileVMService)
+            IMapper mapper)
         {
             _environment = environment;
             _users = users;
             _userManager = userManager;
             _mapper = mapper;
-            _profileVMService = profileVMService;
+
         }
 
         [Route("[action]")]

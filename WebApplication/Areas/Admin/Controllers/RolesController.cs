@@ -18,6 +18,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
+    [Route("Roles")]
     public class RolesController : BaseController
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -34,19 +35,19 @@ namespace WebApplication.Areas.Admin.Controllers
             _roleManager = roleManager;
             _logger = loggerFactory.CreateLogger<RolesController>();
         }
-       
+        [Route("[action]")]
         public IActionResult Index()
         {
             var roles = _roleManager.Roles;
 
             return View(roles.ToList().ToListViewModel());
         }
-
+        [Route("[action]")]
         public IActionResult Create()
         {
             return View();
         }
-
+        [Route("[action]")]
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -64,7 +65,7 @@ namespace WebApplication.Areas.Admin.Controllers
             return View(role);
         }
 
-
+        [Route("[action]")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoleViewModel model)
@@ -88,7 +89,7 @@ namespace WebApplication.Areas.Admin.Controllers
             
             return View(model);
         }
-
+        [Route("[action]")]
         [ActionName("Delete")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -106,7 +107,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(role);
         }
-
+        [Route("[action]")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
@@ -118,7 +119,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-        
+        [Route("[action]")]
         public async Task<IActionResult> Edit(string id)
         {
         
@@ -136,7 +137,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
                 return View(role.ToViewModel());
         }
-
+        [Route("[action]")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(RoleViewModel model)
