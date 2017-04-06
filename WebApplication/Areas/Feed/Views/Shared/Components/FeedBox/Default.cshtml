@@ -1,4 +1,11 @@
-﻿@model List<WebApplication.Core.Domains.Feed.FeedItem>
+﻿@using WebApplication.Core.Domains.Feed
+@using WebApplication.Core.Domains.StatusType
+
+@model List<FeedItem>
+
+@{ 
+    var StatusTypes = ViewBag.StatusType as List<StatusType>;
+}
 
 @foreach (var item in Model)
 {
@@ -13,7 +20,13 @@
                             <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
                             <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
                 </li>
-                <li>
+                <li>                    
+                                    
+                    @*@if (item != null && item.StatusType.Contains(StatusTypes.ToString()))
+                    { 
+                       @StatusTypes.ToString()
+                    }*@
+
                     @item.StatusType
                 </li>
                 <div class="pull-right">
@@ -44,19 +57,28 @@
 
         <ul class="tn-feed-data-footer list-inline">
             <li>
-                <a href="#">Like</a>
+                <form asp-action="IncrementLike" method="post">
+                    <a href="#">Like</a>
+                </form>
+                
                 <span>
-           
-                    @*@item.LikesCounts*@
+                   @*if(!@item.LikesCounts.Equals(null)){@item.LikesCounts }*@
                 </span>
             </li>
 
             <li>
-                <a href="#">Comments</a>
-                @*<span> @item.CommentsCounts</span>*@
-            </li>
-
-
+              
+              
+                @*if(!@item.CommentsCounts.Equals(null)){@item.LikesCounts }*@
+                @*@await Component.InvokeAsync("FeedForm")*@
+        
+                
+                @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
+                {
+                    @await Component.InvokeAsync("CommentDetails", @item.Comments.ToList())
+                }*@
+               </li>
+            
         </ul>
     </div>
     <div class="col-md-3"></div>

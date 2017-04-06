@@ -41,11 +41,11 @@ namespace WebApplication.Areas.Feed.Controllers
         public async Task<IActionResult> Index()
         {
             ViewBag.StatusType = await _statusTypeRepository.FindAll();
-
+                        
             return View();
         }
 
-   
+
         [Route("[action]")]
         [HttpPost]
         public IActionResult PublishedPost(FeedPostViewModel model)
@@ -137,7 +137,10 @@ namespace WebApplication.Areas.Feed.Controllers
             _feedItemRepository.DecrementLike(model);
             return View();
         }
+
+
         [Route("[action]")]
+        [HttpPost]
         public IActionResult PublishComment(Comment model)
         {
             _feedItemRepository.PublishComment(model);

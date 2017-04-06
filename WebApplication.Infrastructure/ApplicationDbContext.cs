@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WebApplication.Core.Domains;
 using WebApplication.Core.Domains.Feed;
 using WebApplication.Core.Domains.MessageTemplate;
 using WebApplication.Core.Domains.StatusType;
@@ -64,6 +65,23 @@ namespace WebApplication.Infrastructure
             set { _statusTypeCollection = value; }
         }
         private IMongoCollection<StatusType> _statusTypeCollection;
+
+
+        public string RoleStatusTypeMappingCollectionName { get; set; } = $"RoleStatusTypeMapping";
+
+        public virtual IMongoCollection<RoleStatusTypeMapping> RoleStatusTypeMappingCollection
+        {
+            get
+            {
+                if (_roleStatusTypeMappingCollection == null)
+                {
+                    _roleStatusTypeMappingCollection = Database.GetCollection<RoleStatusTypeMapping>(RoleStatusTypeMappingCollectionName, CollectionSettings);
+                }
+                return _roleStatusTypeMappingCollection;
+            }
+            set { _roleStatusTypeMappingCollection = value; }
+        }
+        private IMongoCollection<RoleStatusTypeMapping> _roleStatusTypeMappingCollection;
 
 
 

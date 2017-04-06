@@ -36,10 +36,10 @@ namespace WebApplication.Core.Domains.Feed
         //public List<PreciseHistory> History { get; set; }
 
 
-        public int LikesCounts { get { return Likes.Count; } }
+        public int? LikesCounts { get { return Likes.Count; } }
 
 
-        public int CommentsCounts{ get { return Comments.Count;} }
+        public int? CommentsCounts{ get { return Comments.Count;} }
 
 
         public string UpdatedAgo { get { return ((DateTimeOffset.Now) - (PublishedDate)).ToString(); } }

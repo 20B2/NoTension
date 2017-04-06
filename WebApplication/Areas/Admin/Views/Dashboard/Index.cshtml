@@ -1,16 +1,17 @@
 
-<a asp-controller="Roles" asp-action="Index">Roles Admin</a><br/>
-<a asp-controller="Users" asp-action="Index">Users Admin</a><br />
-<a asp-controller="MessageTemplate" asp-action="Index">MessageTemplate Admin</a><br />
-
-<a asp-controller="MessageTest" asp-action="Index">Message Send Using Message Template</a><br />
-
-
 @section Breadcrumbs {
     <ol class="breadcrumb">
-       
+
         <li class="active ">
             <a href="javascript:;">Dashboard</a>
         </li>
     </ol>
 }
+
+
+<a asp-area="Admin" asp-controller="Roles" asp-action="Index">Roles Admin</a><br/>
+<a asp-area="Admin" asp-controller="Users" asp-action="Index">Users Admin</a><br />
+<a asp-area="Admin" asp-controller="StatusType" asp-action="Index">Roles Admin</a><br />
+<a asp-area="Admin" asp-controller="MessageTemplate" asp-action="Index">MessageTemplate Admin</a><br />
+@*<a  asp-controller="MessageTest" asp-action="Index">Message Send Using Message Template</a><br />*@
+
