@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,9 @@ using WebApplication.Infrastructure.Interface.Repository;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
+    [Area("Admin")]
+    [Route("RoleStatusTypeMapping")]
     public class RoleStatusTypeMappingController : Controller
     {
         private IRoleStatusTypeMappingRepository _roleStatusTypeMapping;

@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -18,7 +19,8 @@ using WebApplication.Infrastructure.ViewModels.FeedViewModels;
 namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
-    [Route("Feed")]
+    [Authorize()]
+    [Route("[controller]")]
     public class FeedController : Controller
     {
         private readonly IStatusTypeRepository _statusTypeRepository;
@@ -54,7 +56,6 @@ namespace WebApplication.Areas.Feed.Controllers
 
             feed.PublishedUserId = GetCurrentUserId();
             _feedItemRepository.Save(feed);
-
             return RedirectToAction("Index");
 
         }
@@ -143,6 +144,7 @@ namespace WebApplication.Areas.Feed.Controllers
         [HttpPost]
         public IActionResult PublishComment(Comment model)
         {
+            model.UserId = GetCurrentUserId();
             _feedItemRepository.PublishComment(model);
             return View();
         }

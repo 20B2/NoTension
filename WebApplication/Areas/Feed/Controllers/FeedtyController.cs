@@ -1,4 +1,5 @@
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ using WebApplication.Infrastructure.ViewModels.FeedViewModels;
 namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
+    [Authorize()]
+    [Route("[controller]")]
     public class FeedItemsController : Controller
     {
         private readonly IFeedItemRepository _feedItemService;

@@ -17,9 +17,9 @@ using WebApplication.Infrastructure.ViewModels.ProfileViewModels;
 
 namespace WebApplication.Areas.Profile.Controllers
 {
-    [Authorize()]
+    [Authorize]
     [Area("Profile")]
-    [Route("Profile")]
+    [Route("[controller]")]
     public class ProfileController : Controller
     {
         private readonly IHostingEnvironment _environment;

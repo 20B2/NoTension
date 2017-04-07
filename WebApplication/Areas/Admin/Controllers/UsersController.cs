@@ -18,8 +18,8 @@ using WebApplication.Core.Domains;
 namespace WebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles ="Admin")]
-    [Route("Users/[action]")]
+    [Authorize(Roles = "Admin")]
+    [Route("[controller]")]
     public class UsersController : BaseController
     {
         private readonly ILogger _logger;

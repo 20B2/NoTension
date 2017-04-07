@@ -8,7 +8,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
-    [Route("Admin")]
+    [Route("MessageTemplate")]
     
     public class MessageTemplateController : Controller
     {

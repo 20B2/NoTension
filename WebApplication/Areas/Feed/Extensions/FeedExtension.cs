@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApplication.Core.Domains.Feed;
 
-namespace WebApplication.Areas.Extensions
+namespace WebApplication.Areas.Feed.Extensions
 {
     public static partial class FeedExtension
     {

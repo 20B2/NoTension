@@ -61,16 +61,17 @@
                     <a href="#">Like</a>
                 </form>
                 
-                <span>
-                   @*if(!@item.LikesCounts.Equals(null)){@item.LikesCounts }*@
-                </span>
+            
             </li>
 
             <li>
-              
-              
-                @*if(!@item.CommentsCounts.Equals(null)){@item.LikesCounts }*@
-                @*@await Component.InvokeAsync("FeedForm")*@
+                <span>
+                    @item.LikesCounts  Likes
+                </span>
+
+              @item.CommentsCounts Comments
+           
+            @await Component.InvokeAsync("FeedForm")
         
                 
                 @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))

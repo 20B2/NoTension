@@ -1,0 +1,17 @@
+﻿@model WebApplication.Core.Domains.Feed.Comment
+
+<form asp-action="PublishComment">
+    <div class="form-group">
+        <label asp-for="Text" class="col-md-2 control-label"></label>
+        <div class="col-md-10">
+            <input asp-for="Text" class="form-control" />
+            <span asp-validation-for="Text" class="text-danger"></span>
+        </div>
+    </div>
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</form>
