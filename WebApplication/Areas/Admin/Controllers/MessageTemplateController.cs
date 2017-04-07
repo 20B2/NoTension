@@ -1,12 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 using WebApplication.Core.Domains.MessageTemplate;
 using WebApplication.Infrastructure.Interface.Repository;
 
 namespace WebApplication.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     [Area("Admin")]
+    [Route("admin/[controller]")]
     public class MessageTemplateController : Controller
     {
         public MessageTemplateController(IMessageRepository messageRepository)
@@ -15,7 +17,7 @@ namespace WebApplication.Areas.Admin.Controllers
         }
 
         protected readonly IMessageRepository _messageRepository;
-
+    
         public async Task<IActionResult> Index()
         {
             var item = await _messageRepository.FindAll();
@@ -28,7 +30,7 @@ namespace WebApplication.Areas.Admin.Controllers
         {
             return View();
         }
-
+ 
         [HttpPost]
         public IActionResult Create(MessageTemplate model)
         {
@@ -70,7 +72,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-
+    
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -86,7 +88,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(MessageTemplate model)
@@ -129,7 +131,7 @@ namespace WebApplication.Areas.Admin.Controllers
             return View(queryresult);
         }
 
-
+  
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)

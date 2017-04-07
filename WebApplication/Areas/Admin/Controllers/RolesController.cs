@@ -18,6 +18,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
+    [Route("admin/[controller]")]
     public class RolesController : BaseController
     {
         private readonly RoleManager<IdentityRole> _roleManager;
@@ -34,7 +35,7 @@ namespace WebApplication.Areas.Admin.Controllers
             _roleManager = roleManager;
             _logger = loggerFactory.CreateLogger<RolesController>();
         }
-       
+
         public IActionResult Index()
         {
             var roles = _roleManager.Roles;
@@ -46,7 +47,7 @@ namespace WebApplication.Areas.Admin.Controllers
         {
             return View();
         }
-
+ 
         public async Task<IActionResult> Details(string id)
         {
             if (id == null)
@@ -64,7 +65,7 @@ namespace WebApplication.Areas.Admin.Controllers
             return View(role);
         }
 
-
+  
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(RoleViewModel model)
@@ -118,7 +119,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-        
+
         public async Task<IActionResult> Edit(string id)
         {
         

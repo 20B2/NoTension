@@ -20,6 +20,7 @@ namespace WebApplication.Controllers
         public IActionResult Index()
         {
             return View();
+            //return RedirectToAction("Index","Feed", new { Area = "Feed" });
         }
 
         public IActionResult About()

@@ -1,12 +1,5 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using MongoDB.Driver;
-using System;
+﻿using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using WebApplication.Core.Domains;
 using WebApplication.Core.Domains.MessageTemplate;
 using WebApplication.Core.Domains.StatusType;
 using WebApplication.Identity;

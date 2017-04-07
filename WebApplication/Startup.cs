@@ -29,6 +29,7 @@ using WebMarkupMin.AspNetCore1;
 using WebApplication.Helpers;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication
 {
@@ -85,7 +86,9 @@ namespace WebApplication
             services.AddSingleton<IProfileService, ProfileService>();
             services.AddSingleton<SeedDataHelper>();
             services.AddSingleton<IProfileSettingViewModelService, ProfileSettingViewModelService>();
+            services.AddSingleton<IRoleStatusTypeMappingRepository, RoleStatusTypeMappingRepository>();
             
+
             services.AddMvc();
 
             services.AddAutoMapper(typeof(Startup));
@@ -121,8 +124,8 @@ namespace WebApplication
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, SeedDataHelper seed)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
-            loggerFactory.AddNLog();
-            loggerFactory.AddDebug();
+            //loggerFactory.AddNLog();
+            //loggerFactory.AddDebug();
             
             if (env.IsDevelopment())
             {
@@ -133,18 +136,18 @@ namespace WebApplication
             else
             {
                 app.UseExceptionHandler("/Home/Error");
-                app.UseStatusCodePagesWithReExecute("/errors/{0}");
+                //app.UseStatusCodePagesWithReExecute("/errors/{0}");
 
             }
-            app.AddNLogWeb();
-            env.ConfigureNLog("nlog.config");
+            //app.AddNLogWeb();
+            //env.ConfigureNLog("nlog.config");
 
             app.UseStaticFiles();
             
 
-            app.UseCors(builder => {
-                builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
-            });
+            //app.UseCors(builder => {
+            //    builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader();
+            //});
 
             app.UseWebMarkupMin();
                         
@@ -169,18 +172,18 @@ namespace WebApplication
                     ConsumerSecret = "fF4cdlcMxeDrvZJFLRZAj7SDkQt7NYBetewCzbJzRxUUbPCMmO"
                 });
 
-             seed.Initialize();
+            seed.Initialize();
 
-            app.Use(async (context, next) =>
-            {
-                await next();
+            //app.Use(async (context, next) =>
+            //{
+            //    await next();
 
-                if (context.Response.StatusCode == 404)
-                {
-                    context.Request.Path = "/index.html"; // Put your Angular root page here 
-                    await next();
-                }
-            });
+            //    if (context.Response.StatusCode == 404)
+            //    {
+            //        context.Request.Path = "/index.html"; // Put your Angular root page here 
+            //        await next();
+            //    }
+            //});
 
             app.UseMvc(routes =>
             {
@@ -188,22 +191,30 @@ namespace WebApplication
                    name: "areaRoute",
                    template: "{area:exists}/{controller}/{action}/{id?}",
                    defaults: new { controller = "Dashboard", action = "Index" });
-
+                    
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" });
 
-                routes.MapRoute(
-                     name: "api",
-                     template: "api/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //     name: "api",
+                //     template: "api/{controller=Home}/{action=Index}/{id?}");
 
-                routes.MapRoute(
-                     name: "feed",
-                     template: "feed/{controller=Feed}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //     name: "feed",
+                //     template: "feed/{controller}/{action}",
+                //     defaults: new { controller = "Feed", action = "Index" });
 
-                routes.MapRoute(
-                     name: "profile",
-                     template: "profile/{controller=Profile}/{action=Index}");
+                //routes.MapRoute(
+                //     name: "admin",
+                //     template: "admin/{controller}/{action}/{id?}",
+                //     defaults: new { controller = "Dashboard", action = "Index" });
+
+                //routes.MapRoute(
+                //     name: "profile",
+                //     template: "profile/{controller}/{action}",
+                //     defaults: new { controller = "Profile", action = "Index" });
 
             });
         }

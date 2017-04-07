@@ -1,0 +1,91 @@
+﻿@using WebApplication.Core.Domains.Feed
+@using WebApplication.Core.Domains.StatusType
+
+@model List<FeedItem>
+
+@*@{
+    var StatusTypes = ViewBag.StatusType as List<StatusType>;
+}*@
+
+@foreach (var item in Model)
+{
+
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <div class="row tn-feed-row">
+                <ul class="tn-feed-data list-inline">
+                    <li>
+                        Mahesh Sunuwar <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </li>
+                    <li>
+
+                        @*@if (item != null && item.StatusType.Contains(StatusTypes.ToString()))
+                            {
+                               @StatusTypes.ToString()
+                            }*@
+
+                        @item.StatusType
+                    </li>
+                    <div class="pull-right">
+                        <li>
+                            @item.UpdatedAgo
+                        </li>
+
+                    </div>
+
+                </ul>
+                <div class="tn-post-text">
+                    <div class="row">
+                        <div class="col-md-2">
+                            @*check photo*@
+                            @*<div class="photo text-center">
+                                  @item.Image
+                                </div>*@
+                        </div>
+                        @*status area*@
+                        <div class="col-md-10">
+                            <div class="tn-status-text">
+                                @item.Text
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="tn-feed-data-footer list-inline">
+                <li>
+                    <form asp-action="IncrementLike" method="post">
+                        <a href="#">Like</a>
+                    </form>
+
+
+                </li>
+
+                <li>
+                    <span>
+                        @item.LikesCounts  Likes
+                    </span>
+
+                    @item.CommentsCounts Comments
+
+                    @await Component.InvokeAsync("FeedForm")
+
+
+                    @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
+                        {
+                            @await Component.InvokeAsync("CommentDetails", @item.Comments.ToList())
+                        }*@
+                </li>
+
+            </ul>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+
+
+}
+
+

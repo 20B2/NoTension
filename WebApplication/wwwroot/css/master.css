@@ -248,25 +248,102 @@ body {
 /*profile-setting-menu-end*/
 /*profile end*/
 /*post panel*/
-.post-panel {
-  padding: 15px;
+.tn-post-row {
+  padding-top: 15px;
+  padding-bottom: 12px;
   background-color: white;
+  border-radius: 5px 5px 0px 0px;
 }
-.post-panel .post-panel-body .post-pic {
-  display: none;
+.tn-post-row .tn-profile-photo {
+  height: 30px;
+  width: 30px;
+  border: 1px solid black;
 }
-.post-panel .post-panel-body .post-area textarea {
+.tn-textarea {
   min-width: 100%;
-  border: 2px solid #272444;
+  min-height: 20px;
+  border: none;
 }
-.post-panel .post-panel-body .post-area textarea:focus > .post-panel .post-panel-body .post-area textarea:active > .postpanel .post-panel-body div.post-pic {
-  display: block !important;
+.tn-textarea:focus,
+.tn-textarea:active {
+  min-height: 80px;
 }
-.post-panel .post-panel-body .post-area textarea:focus,
-.post-panel .post-panel-body .post-area textarea:active {
-  min-height: 70px;
+.tn-post-type-selection span select {
+  padding: 5px;
+  border: none;
+}
+ul.tn-add-info {
+  background-color: #5D569C;
+  margin-left: -15px;
+  margin-right: -15px;
+  list-style-type: none;
+  overflow: hidden;
+}
+ul.tn-add-info li {
+  float: left;
+  padding: 10px;
+}
+ul.tn-add-info li:hover {
+  background-color: #272444;
+}
+ul.tn-add-info li a {
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+ul.tn-add-info li button {
+  background-color: transparent;
+  border: none;
+  color: white;
 }
 /*pst panel end*/
-.display-block {
-  display: block !important;
+/*post feed panel*/
+.tn-feed-row {
+  background-color: white;
+  padding-bottom: 0px;
 }
+.tn-feed-row .tn-feed-data {
+  background-color: #5D569C;
+  margin-left: 0px;
+  padding-bottom: 0px;
+}
+.tn-feed-row .tn-feed-data li {
+  padding: 10px;
+  color: white;
+  list-style: none;
+}
+.tn-post-text {
+  margin-top: -7px;
+  padding: 15px;
+}
+.tn-post-text .tn-status-text {
+  text-align: justify;
+}
+.tn-feed-data-footer {
+  background-color: #5D569C;
+  margin-left: -15px;
+  margin-right: -15px;
+  box-shadow: black 0px 8px 50px 0px;
+}
+.tn-feed-data-footer li {
+  padding: 10px;
+  color: white;
+  list-style: none;
+}
+.tn-feed-data-footer li:hover {
+  background-color: #272444;
+}
+.tn-feed-data-footer li a {
+  text-decoration: none;
+  color: white;
+}
+/*post feed panel end*/
+/*tool tip*/
+/*tool-tip*/
+/*to be deleted*/
+.photo {
+  width: 80px;
+  height: 80px;
+  border: 1px solid grey;
+}
+/*to be deleted end*/
