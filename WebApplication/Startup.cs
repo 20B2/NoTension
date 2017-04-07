@@ -29,6 +29,7 @@ using WebMarkupMin.AspNetCore1;
 using WebApplication.Helpers;
 using NLog.Extensions.Logging;
 using NLog.Web;
+using Microsoft.AspNetCore.Mvc;
 
 namespace WebApplication
 {
@@ -190,22 +191,30 @@ namespace WebApplication
                    name: "areaRoute",
                    template: "{area:exists}/{controller}/{action}/{id?}",
                    defaults: new { controller = "Dashboard", action = "Index" });
-
+                    
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller}/{action}/{id?}",
+                    defaults: new { controller = "Home", action = "Index" });
 
-                routes.MapRoute(
-                     name: "api",
-                     template: "api/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //     name: "api",
+                //     template: "api/{controller=Home}/{action=Index}/{id?}");
 
                 //routes.MapRoute(
                 //     name: "feed",
-                //     template: "feed/{controller=Feed}/{action=Index}/{id?}");
+                //     template: "feed/{controller}/{action}",
+                //     defaults: new { controller = "Feed", action = "Index" });
+
+                //routes.MapRoute(
+                //     name: "admin",
+                //     template: "admin/{controller}/{action}/{id?}",
+                //     defaults: new { controller = "Dashboard", action = "Index" });
 
                 //routes.MapRoute(
                 //     name: "profile",
-                //     template: "profile/{controller=Profile}/{action=Index}");
+                //     template: "profile/{controller}/{action}",
+                //     defaults: new { controller = "Profile", action = "Index" });
 
             });
         }

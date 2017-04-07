@@ -20,7 +20,7 @@ namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
     [Authorize()]
-    [Route("[controller]")]
+    //[Route("feed/[controller]")]
     public class FeedController : Controller
     {
         private readonly IStatusTypeRepository _statusTypeRepository;
@@ -39,7 +39,7 @@ namespace WebApplication.Areas.Feed.Controllers
             _userManager = userManager;
         }
 
-        [Route("[action]")]
+        
         public async Task<IActionResult> Index()
         {
             ViewBag.StatusType = await _statusTypeRepository.FindAll();
@@ -48,7 +48,7 @@ namespace WebApplication.Areas.Feed.Controllers
         }
 
 
-        [Route("[action]")]
+  
         [HttpPost]
         public IActionResult PublishedPost(FeedPostViewModel model)
         {             
@@ -119,7 +119,7 @@ namespace WebApplication.Areas.Feed.Controllers
             return View(await PaginatedList<FeedItem>.CreateAsync(users.ToList(), page ?? 1, pageSize));
 
         }
-        [Route("[action]")]
+   
         public async Task<IActionResult> IncrementLike(Like model)
         {           
             var feed = await _feedItemRepository.Get(GetCurrentUserId()); //feedId
@@ -131,7 +131,7 @@ namespace WebApplication.Areas.Feed.Controllers
             //}
                 return View();
         }
-        [Route("[action]")]
+   
         public IActionResult DecrementLike(Like model)
         {
             model.UserId = GetCurrentUserId();
@@ -140,7 +140,7 @@ namespace WebApplication.Areas.Feed.Controllers
         }
 
 
-        [Route("[action]")]
+
         [HttpPost]
         public IActionResult PublishComment(Comment model)
         {
@@ -148,7 +148,7 @@ namespace WebApplication.Areas.Feed.Controllers
             _feedItemRepository.PublishComment(model);
             return View();
         }
-        [Route("[action]")]
+ 
         public IActionResult DePublishComment(string id)
         {
             _feedItemRepository.DePublishComment(id);
@@ -173,7 +173,7 @@ namespace WebApplication.Areas.Feed.Controllers
             return await _userManager.GetUserAsync(HttpContext.User);
         }
 
-        [Route("[action]")]
+
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -188,7 +188,7 @@ namespace WebApplication.Areas.Feed.Controllers
             }
             return View(feedItem);
         }
-        [Route("[action]")]
+    
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("Text,IsPublished,Image")] FeedItem feedItem)
@@ -215,7 +215,6 @@ namespace WebApplication.Areas.Feed.Controllers
             return View(feedItem);
         }
 
-        [Route("[action]")]
         public async Task<IActionResult> Delete(string id)
         {
             if (id == null)

@@ -19,7 +19,7 @@ namespace WebApplication.Areas.Profile.Controllers
 {
     [Authorize]
     [Area("Profile")]
-    [Route("[controller]")]
+    [Route("profile/[controller]")]
     public class ProfileController : Controller
     {
         private readonly IHostingEnvironment _environment;
@@ -39,7 +39,7 @@ namespace WebApplication.Areas.Profile.Controllers
 
         }
 
-        [Route("[action]")]
+      
 
         public IActionResult Index()
         {
@@ -49,7 +49,7 @@ namespace WebApplication.Areas.Profile.Controllers
 
         }
 
-        [Route("[action]")]
+     
         public async Task<ActionResult> Edit()
         {
            

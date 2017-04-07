@@ -13,7 +13,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    [Route("[controller]")]
+    [Route("admin/[controller]")]
     public class StatusTypeController : Controller
     {
       private readonly IStatusTypeRepository _statusTypeRepository;
@@ -22,14 +22,14 @@ namespace WebApplication.Areas.Admin.Controllers
         {
             _statusTypeRepository = statusTypeRepository;
         }
-        [Route("[action]")]
+   
         public async Task<IActionResult> Index()
         {
             var item = await _statusTypeRepository.FindAll();
 
             return View(item);
         }
-        [Route("[action]")]
+ 
         [HttpGet]
         public IActionResult Create()
         {
@@ -37,7 +37,7 @@ namespace WebApplication.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [Route("[action]")]
+     
         public IActionResult Create(StatusType model)
         {
             if (ModelState.IsValid)
@@ -51,7 +51,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return RedirectToAction("Index");
         }
-        [Route("[action]")]
+     
         public async Task<IActionResult> Details(string id)
         {
 
@@ -69,7 +69,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-        [Route("[action]")]
+ 
         public async Task<IActionResult> Edit(string id)
         {
             if (id == null)
@@ -85,7 +85,7 @@ namespace WebApplication.Areas.Admin.Controllers
 
             return View(queryresult);
         }
-        [Route("[action]")]
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(StatusType model)
@@ -102,7 +102,6 @@ namespace WebApplication.Areas.Admin.Controllers
             return View();
         }
 
-        [Route("[action]")]
         public async Task<IActionResult> Delete(string id)
         {
 

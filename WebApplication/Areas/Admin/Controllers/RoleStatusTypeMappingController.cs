@@ -11,7 +11,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
-    [Route("RoleStatusTypeMapping")]
+    [Route("admin/[controller]")]
     public class RoleStatusTypeMappingController : Controller
     {
         private IRoleStatusTypeMappingRepository _roleStatusTypeMapping;
@@ -23,9 +23,9 @@ namespace WebApplication.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            _roleStatusTypeMapping.FindAll();
+           var item =  _roleStatusTypeMapping.FindAll();
 
-            return View();
+            return View(item);
         }
 
         public IActionResult Create()
