@@ -15,11 +15,15 @@
     <div class="col-md-6">
         <div class="row tn-feed-row">
             <ul class="tn-feed-data list-inline">
-                <li>
-                    Mahesh Sunuwar <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </li>
+                <li class="">
+                    Mahesh Sunuwar 
+                   
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    
+                    </li>
                 <li>                    
                                     
                     @*@if (item != null && item.StatusType.Contains(StatusTypes.ToString()))
@@ -59,19 +63,28 @@
             <li>
                 <form asp-action="IncrementLike" method="post">
                     <a href="#">Like</a>
+                    <span>
+                        @item.LikesCounts 
+                    </span>
                 </form>
                 
             
             </li>
 
             <li>
-                <span>
-                    @item.LikesCounts  Likes
-                </span>
+               
+                <a href="#comments">
+                    Comment
+                    <span>
+                        @item.CommentsCounts
+                    </span>
+                   
 
-              @item.CommentsCounts Comments
+
+                </a>
+                
            
-            @await Component.InvokeAsync("FeedForm")
+           
         
                 
                 @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
@@ -81,6 +94,7 @@
                </li>
             
         </ul>
+        
     </div>
     <div class="col-md-3"></div>
 </div>

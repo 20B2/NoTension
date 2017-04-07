@@ -18,9 +18,8 @@
 
         <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/master.css" />
-        <link href="~/css/admin.css" rel="stylesheet" />
-        <base href="/" />
-     
+        <link href="~/css/admin.min.css" rel="stylesheet" />
+
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -31,48 +30,99 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/master.css" />
-        <base href="/" />
+        <link href="~/css/admin.min.css" rel="stylesheet" />
     </environment>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
-    
-    <div class="wrapper">
-        <!-- Main Header -->
-        @await Html.PartialAsync("_TopMenu")
-        <!-- Left side column. contains the logo and sidebar -->
-        @await Html.PartialAsync("_LeftMenu")
-        <!-- Content Wrapper. Contains page content -->
-        <div class="content-wrapper">
-            <!-- Content Header (Page header) -->
-            <section class="content-header">
-                <h1>
-                    @ViewData["ContentHeader"]
-                    <small>@await RenderSectionAsync("headerLeftOptional", required: false)</small>
-                </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                    <li class="active">Here</li>
-                </ol>
-            </section>
-            <section class="content-header clearfix">
-                <div class="pull-left">
-                    @await RenderSectionAsync("actionHeader", required: false)
-                </div>
-            </section>
-            <!-- Main content -->
-            <section class="content">
-                <!-- Your Page Content Here -->
-                @RenderBody()
-            </section>
-            <!-- /.content -->
+<body>
+
+    <ul class="tn-sidebar">
+        <li class="title">
+            M<span>ahesh Sunuwar</span>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-home"></i>
+                <span>Home</span>
+                <span class="fa fa-caret-down"></span>
+               
+            </a>
+        </li>
+        <li>
+            <a href="#">
+                <i class="fa fa-user">
+                </i>
+                    <span>Profile</span>
+                    <span><i class="fa fa-caret-down"></i></span>
+               
+            </a>
+        </li>
+
+
+    </ul>
+    @*<ul class="tn-sidebar">
+            <li class="header">Navigation</li>
+            <!-- Optionally, you can add icons to the links -->
+            <li id="menu-dashboard"><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>
+            <li><a asp-area="" asp-controller="Home" asp-action="Index"><i class="fa fa-tv"></i><span>Home</span></a></li>
+            <li id="menu-catalog" class="treeview">
+                <!-- catalog tree bar -->
+                <a href="#">
+                    <i class="fa fa-book"></i> <span>Admin</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a id="menu-admin-user" asp-controller="#" asp-action="List"><i class="fa fa-circle-o"></i><span>User</span></a></li>
+                    <li><a id="menu-admin-role" asp-controller="#" asp-action="List"><i class="fa fa-circle-o"></i><span>Role</span></a></li>
+                    <li><a id="menu-admin-statustype" asp-controller="#" asp-action="List"><i class="fa fa-circle-o"></i><span>Status Type</span></a></li>
+                    <li><a id="menu-admin-messaetemplateg" asp-controller="#" asp-action="List"><i class="fa fa-circle-o"></i><span>Message Template</span></a></li>
+                </ul>
+            </li>
+            <!-- sales tree bar -->
+            <li id="menu-sale" class="treeview">
+                <a href="#">
+                    <i class="fa fa-shopping-cart"></i> <span>Setting</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a id="menu-sale-orders" asp-controller="#" asp-action="List"><i class="fa fa-circle-o"></i><span>Privacy</span></a></li>
+                </ul>
+            </li>
+        </ul>*@
+
+    <ul class="tn-nav">
+        <li class="expand">
+            <a href="#" >
+                <i class="fa fa-bars"></i>
+            </a>
+        </li>
+        <li class="close">
+            <a href="#" >
+                <i class="fa fa-times"></i>
+            </a>
+        </li>
+        <div class="tn-login">
+            <li>
+                asd
+            </li>
         </div>
-        <!-- /.content-wrapper -->
-        <!-- Main Footer -->
-        @await Html.PartialAsync("_Footer")
+    </ul>
+
+    <div class="tn-body-content">
+        @RenderSection("Breadcrumbs", required: false)
+        @RenderBody()
     </div>
-    <!-- ./wrapper -->
-    @RenderSection("Breadcrumbs", required: false)
-    @RenderSection("menu", required: false)
+
+
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="~/js/admin.js"></script>
+
+
     @RenderSection("scripts", required: false)
-  </body>
+</body>
 </html>

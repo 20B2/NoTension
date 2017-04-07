@@ -1,0 +1,128 @@
+﻿@navcolor: #403b6b;
+@navfocuscolor: #272444;
+
+
+
+
+ul.tn-sidebar {
+    height: 100%;
+    //width: 50px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: @navcolor;
+    margin-left: -41px;
+
+    li {
+        list-style: none;
+        margin-left: 0px;
+        padding:15px;
+        &:hover {
+            background-color: @navfocuscolor;
+        }
+
+        &:nth-child(1) {
+            color: white;
+            background-color: @navfocuscolor;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            //padding: 15px;
+
+            span {
+                display: none;
+
+                &:nth-child(1) {
+                }
+
+                &:nth-child(3) {
+                    float: right;
+                }
+            }
+        }
+
+        span {
+            display: none;
+        }
+    }
+}
+
+.tn-login{
+    float:right;
+    margin-right:15px;
+}
+
+ul.tn-nav {
+    top: 0;
+    position: fixed;
+    background-color: @navcolor;
+    left: 42px;
+
+    min-width: 100%;
+    padding-left: 0px;
+    //box-shadow: 5px 0px 30px 0px;
+    li {
+        float: left;
+        overflow: hidden;
+        list-style: none;
+        padding: 15px;
+
+        &:hover {
+            background-color: @navfocuscolor;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            
+        }
+
+        .close {
+            display: none;
+        }
+    }
+
+}
+
+
+
+
+.tn-bg-nav-click{
+    background-color:@navfocuscolor;
+}
+
+.tn-body-content {
+    
+    padding-left: 50px;
+    padding-right: 15px;
+    padding-bottom: 15px;
+}
+
+.display {
+    display: inline !important;
+}
+
+.tn-sidebar-togglewidth {
+    min-width: 250px;
+    box-shadow: 0px 0px 30px 1px;
+}
+
+.tn-header-nav-toggle {
+    left: 209px !important;
+}
+
+.tn-header-body-toggle {
+    padding-left: 220px !important;
+}
+
+
+/*login*/
+
+
+/*login a*/
+
+/*breadcrump */
+
+/*breadcrump end */

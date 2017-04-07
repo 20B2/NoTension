@@ -191,59 +191,78 @@ body {
   padding: 15px;
   font-size: medium;
 }
-.setting-menu .setting-menu-name li,
-.setting-menu-detail .setting-menu-name li {
+.setting-menu > li,
+.setting-menu-detail > li {
+  float: none;
   padding: 10px;
   list-style: none;
-}
-.setting-menu .setting-menu-name li:hover,
-.setting-menu-detail .setting-menu-name li:hover,
-.setting-menu .setting-menu-name li:active,
-.setting-menu-detail .setting-menu-name li:active,
-.setting-menu .setting-menu-name li:focus,
-.setting-menu-detail .setting-menu-name li:focus,
-.setting-menu .setting-menu-name li:visited,
-.setting-menu-detail .setting-menu-name li:visited {
-  background-color: #d8d8de;
-}
-.setting-menu .setting-menu-name li a,
-.setting-menu-detail .setting-menu-name li a {
-  text-decoration: none;
   color: #272444;
 }
-.setting-menu .setting-detail .setting-detail-detail,
-.setting-menu-detail .setting-detail .setting-detail-detail {
+.setting-menu > li:hover,
+.setting-menu-detail > li:hover,
+.setting-menu > li:active,
+.setting-menu-detail > li:active,
+.setting-menu > li:focus,
+.setting-menu-detail > li:focus,
+.setting-menu > li:visited,
+.setting-menu-detail > li:visited {
+  background-color: #d8d8de !important;
+  border: none;
+}
+.setting-menu > li a,
+.setting-menu-detail > li a {
+  text-decoration: none;
+  color: #272444 !important;
+}
+.nav-tabs > li.active > a,
+.nav-tabs > li > a {
+  background-color: #f4f4f5;
+  border: none;
+}
+.nav-tabs > li:hover > a {
+  background-color: #d8d8de;
+}
+.nav-tabs > li.active > a:hover,
+.nav-tabs > li.active > a:focus {
+  background-color: #d8d8de;
+  border: none;
+}
+.setting-detail .setting-detail-detail {
   padding: 0px;
 }
-.setting-menu .setting-detail .setting-detail-detail li,
-.setting-menu-detail .setting-detail .setting-detail-detail li {
+.setting-detail .setting-detail-detail li {
   padding: 15px;
   list-style: none;
 }
-.setting-menu .setting-detail .setting-detail-detail li .profilePic,
-.setting-menu-detail .setting-detail .setting-detail-detail li .profilePic {
+.setting-detail .setting-detail-detail li .profilePic {
   text-align: center;
   padding: 5px;
   height: 100px;
   width: 100px;
   border: 1px dotted #272444;
 }
-.setting-menu .setting-detail .setting-detail-detail .profilePicUpload,
-.setting-menu-detail .setting-detail .setting-detail-detail .profilePicUpload {
+.setting-detail .setting-detail-detail .profilePicUpload {
   position: relative;
 }
-.setting-menu .setting-detail .setting-detail-detail .profilePicUpload .profilePic,
-.setting-menu-detail .setting-detail .setting-detail-detail .profilePicUpload .profilePic {
+.setting-detail .setting-detail-detail .profilePicUpload .profilePic {
   width: 25%;
   height: 100px;
   width: 100px;
   border: 1px groove;
 }
-.setting-menu .setting-detail .setting-detail-detail .profilePicUpload .profilePicUploadInfo,
-.setting-menu-detail .setting-detail .setting-detail-detail .profilePicUpload .profilePicUploadInfo {
+.setting-detail .setting-detail-detail .profilePicUpload .profilePicUploadInfo {
   position: absolute;
   width: 75%;
   top: 30%;
+}
+.setting-expand {
+  display: none;
+}
+.dispaly-none {
+  display: none;
+}
+.display-block {
+  display: block;
 }
 /*profile-setting-menu-end*/
 /*profile end*/
@@ -312,6 +331,12 @@ ul.tn-add-info li button {
   color: white;
   list-style: none;
 }
+.tn-feed-row .tn-feed-data li a {
+  color: white;
+  text-decoration: none;
+  padding-left: 5px;
+  font-size: smaller;
+}
 .tn-post-text {
   margin-top: -7px;
   padding: 15px;
@@ -337,6 +362,9 @@ ul.tn-add-info li button {
   text-decoration: none;
   color: white;
 }
+.tn-feed-data-footer li ul.comments {
+  position: absolute;
+}
 /*post feed panel end*/
 /*tool tip*/
 /*tool-tip*/
@@ -347,3 +375,7 @@ ul.tn-add-info li button {
   border: 1px solid grey;
 }
 /*to be deleted end*/
+/*extra*/
+.db {
+  display: block !important;
+}

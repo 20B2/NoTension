@@ -46,7 +46,29 @@
 
 /*dropdown open*/
 
-$(".dopen").on('click', function () {
+$(".dopen").click(function () {
     $(this).toggleClass('open');
 });
 
+/*setting expanded*/
+
+
+$(".nav-tabs a").click(function () {
+  
+    $(this).tab('show');
+
+    
+
+    });
+
+
+/*setting expanded end*/
+
+
+/*comment hide and show*/
+
+$('tn-feed-data-footer li a').on('click', function () {
+    $(this + ' ' + 'comments').addClass('db');
+});
+
+/*comments hide and shwo end*/

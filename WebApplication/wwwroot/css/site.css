@@ -5,7 +5,50 @@
     background-color:#e9ebee;
 }
 
+/*table*/
+td, th {
+    text-align: left !important;
+}
+/*notification*/
+notification {
+    min-width: 300px;
+}
 
+.notification-header {
+    padding-top: 2px;
+    padding-left: 10px;
+}
+
+.notification-footer {
+    padding-bottom: 2px;
+    padding-left: 10px;
+}
+
+.notification-body {
+    overflow: auto;
+    max-height: 250px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.notification-content {
+    text-decoration: none !important;
+}
+
+.notification-li {
+    background-color: #e4e2e2;
+    margin-top: 5px;
+    padding: 5px;
+}
+
+.notification-body-item {
+    margin: 5px;
+}
+
+.notification-item-info {
+    cursor: text;
+}
+/*notifiacation end*/
 
 /* Wrapping element */
 
@@ -685,4 +728,10 @@ min-height:40px;
 .dropdown-toggle:focus .dropdown-menu,
 .dropdown-toggle:active .dropdown-menu {
     display: block !important;
+}
+
+
+
+.form-control{
+    min-width:100%;
 }

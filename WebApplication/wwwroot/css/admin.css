@@ -1,69 +1,86 @@
-﻿input,
-select,
-textarea {
+﻿ul.tn-sidebar {
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: #403b6b;
+  margin-left: -41px;
 }
-
-.table > thead > tr > td,
-.table > tbody > tr > td {
-    vertical-align: middle !important;
+ul.tn-sidebar li {
+  list-style: none;
+  margin-left: 0px;
+  padding: 15px;
 }
-
-.input-stack-margin {
-    margin: 2px;
+ul.tn-sidebar li:hover {
+  background-color: #272444;
 }
-
-.fa.true-icon {
-    color: #007FCC;
-    font-size: 20px;
+ul.tn-sidebar li:nth-child(1) {
+  color: white;
+  background-color: #272444;
 }
-
-.fa.false-icon {
-    color: #D22D2D;
-    font-size: 20px;
+ul.tn-sidebar li a {
+  text-decoration: none;
+  color: white;
 }
-
-.selected {
-    background-color: #b1b1b1;
+ul.tn-sidebar li a span {
+  display: none;
 }
-
-    .selected:hover {
-        background-color: #9a9a9a !important;
-    }
-
-.input-file {
-    width: 0.1px;
-    height: 0.1px;
-    opacity: 0;
-    overflow: hidden;
-    position: absolute;
-    z-index: -1;
+ul.tn-sidebar li a span:nth-child(3) {
+  float: right;
 }
-
-.thumbnail-img {
-    margin-top: 5px;
-    height: 150px !important;
-    width: 150px !important;
+ul.tn-sidebar li span {
+  display: none;
 }
-
-.thumbnail > .caption {
-    padding-top: 0px;
+.tn-login {
+  float: right;
+  margin-right: 15px;
 }
-
-.thumbnail-title {
-    font-size: 16px;
-    line-height: normal;
-    display: block;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
+ul.tn-nav {
+  top: 0;
+  position: fixed;
+  background-color: #403b6b;
+  left: 42px;
+  min-width: 100%;
+  padding-left: 0px;
 }
-
-.product-img-sm {
-    height: 96px !important;
-    width: 96px !important;
+ul.tn-nav li {
+  float: left;
+  overflow: hidden;
+  list-style: none;
+  padding: 15px;
 }
-
-.product-img-md {
-    height: 128px !important;
-    width: 128px !important;
+ul.tn-nav li:hover {
+  background-color: #272444;
 }
+ul.tn-nav li a {
+  text-decoration: none;
+  color: white;
+}
+ul.tn-nav li .close {
+  display: none;
+}
+.tn-bg-nav-click {
+  background-color: #272444;
+}
+.tn-body-content {
+  padding-left: 50px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+.display {
+  display: inline !important;
+}
+.tn-sidebar-togglewidth {
+  min-width: 250px;
+  box-shadow: 0px 0px 30px 1px;
+}
+.tn-header-nav-toggle {
+  left: 209px !important;
+}
+.tn-header-body-toggle {
+  padding-left: 220px !important;
+}
+/*login*/
+/*login a*/
+/*breadcrump */
+/*breadcrump end */
