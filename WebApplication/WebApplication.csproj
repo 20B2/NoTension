@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\admin.css" />
+    <Content Include="wwwroot\css\master.less" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.0.2" />

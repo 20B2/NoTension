@@ -1,0 +1,16 @@
+﻿@model List<WebApplication.Core.Domains.RoleStatusTypeMapping>
+
+
+@foreach (var item in Model)
+{
+    @item.RoleName
+
+    @foreach(var type in item.StatusTypes)
+    { 
+        @type
+
+    }
+
+}
+
+

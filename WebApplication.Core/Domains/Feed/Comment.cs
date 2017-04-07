@@ -6,7 +6,7 @@ namespace WebApplication.Core.Domains.Feed
     {
         public string UserId { get; set; }
 
-        public DateTimeOffset Time { get; set; }
+        public DateTimeOffset Time { get; set; } = DateTimeOffset.UtcNow ;
 
         public string Text { get; set; }
 
