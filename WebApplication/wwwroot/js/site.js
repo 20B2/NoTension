@@ -67,8 +67,7 @@ $(".nav-tabs a").click(function () {
 
 /*comment hide and show*/
 
-$('tn-feed-data-footer li a').on('click', function () {
-    $(this + ' ' + 'comments').addClass('db');
+$('.comment').click(function () {
+    $(this).offsetParent('div#tn-feedbox').children('ul.comments').toggleClass('display-block');    
 });
-
 /*comments hide and shwo end*/

@@ -259,10 +259,10 @@ body {
   display: none;
 }
 .dispaly-none {
-  display: none;
+  display: none !important;
 }
 .display-block {
-  display: block;
+  display: block !important;
 }
 /*profile-setting-menu-end*/
 /*profile end*/
@@ -362,8 +362,29 @@ ul.tn-add-info li button {
   text-decoration: none;
   color: white;
 }
-.tn-feed-data-footer li ul.comments {
-  position: absolute;
+.tn-feed-data-footer li .comment {
+  cursor: pointer;
+}
+.comments {
+  margin-top: -10px;
+  margin-left: -15px;
+  margin-right: -15px;
+  display: none;
+  border: 1px solid #5D569C;
+  border-radius: 0px 0px 5px 5px;
+  border-top: none;
+  background-color: #fff;
+}
+.comments li {
+  padding: 5px;
+  padding-left: 0px;
+  list-style: none;
+  color: #272444;
+  position: relative;
+}
+.comments li.tn-cmt-name {
+  font-size: 15px;
+  text-align: justify;
 }
 /*post feed panel end*/
 /*tool tip*/
@@ -378,4 +399,10 @@ ul.tn-add-info li button {
 /*extra*/
 .db {
   display: block !important;
+}
+.tn-btn {
+  border: none;
+  background-color: #272444;
+  color: white;
+  padding: 5px;
 }

@@ -12,7 +12,7 @@
 
 <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="tn-feedbox">
         <div class="row tn-feed-row">
             <ul class="tn-feed-data list-inline">
                 <li class="">
@@ -73,15 +73,12 @@
 
             <li>
                
-                <a href="#comments">
+                <div class="comment">
                     Comment
                     <span>
                         @item.CommentsCounts
                     </span>
-                   
-
-
-                </a>
+                </div>
                 
            
            
@@ -94,7 +91,25 @@
                </li>
             
         </ul>
-        
+        <ul class="comments">
+            <li class="tn-cmt-name">Commenters Name</li>
+            <li>
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+            </li>
+            <hr />
+            <li>
+                <form action="/" method="post">
+                    
+                        <textarea class="form-control">asdfadf</textarea>
+                        <button type="submit" class="tn-btn">Comment</button>
+                   
+                    
+
+                </form>
+            </li>
+           
+        </ul>
     </div>
     <div class="col-md-3"></div>
 </div>
