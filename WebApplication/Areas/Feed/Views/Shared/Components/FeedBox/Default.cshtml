@@ -72,16 +72,7 @@
            
             @*@await Component.InvokeAsync("FeedForm")*@
         
-                @*<form asp-action="PublishComment" method="post">
-                    @*<a href="#">Comments</a>*@
-                    <input asp-for="@item.Comments" />
-                    <input type="submit" value="Submit" />
-                </form>*@
-
-                @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
-                {
-                    @await Component.InvokeAsync("CommentDetails", @item.Comments.ToList())
-                }*@
+   
                </li>
             
         </ul>
