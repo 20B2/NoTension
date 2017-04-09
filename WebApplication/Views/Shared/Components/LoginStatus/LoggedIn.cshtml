@@ -5,7 +5,7 @@
             <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @Model.Email!</a>
         </li>
         <li>
-            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+            <button type="submit" class="btn btn-link navbar-btn navbar-link" asp-area="" asp-controller="Account" asp-action="LogOff">Log off</button>
         </li>
 
         <li class="dropdown">
@@ -21,7 +21,7 @@
                 <li><a asp-area="Profile" asp-controller="Manage" asp-action="Index" tabindex="-1">Manage</a></li>
                 <li><a asp-area="Profile" asp-controller="Help" asp-action="Index" tabindex="-1">Help</a></li>
                 <li class="divider"></li>
-                <li><a asp-controller="Account" asp-action="LogOff" tabindex="-1">Sign Out</a></li>
+                <li><a asp-area="" asp-controller="Account" asp-action="LogOff" tabindex="-1">Sign Out</a></li>
             </ul>   
         </li>
 
