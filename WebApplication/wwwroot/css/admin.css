@@ -1,4 +1,7 @@
-﻿ul.tn-sidebar {
+﻿body {
+  width: 100%;
+}
+ul.tn-sidebar {
   height: 100%;
   position: fixed;
   top: 0;
@@ -39,15 +42,14 @@ ul.tn-nav {
   top: 0;
   position: fixed;
   background-color: #403b6b;
-  left: 42px;
   min-width: 100%;
-  padding-left: 0px;
 }
 ul.tn-nav li {
   float: left;
   overflow: hidden;
   list-style: none;
   padding: 15px;
+  margin-left: -41px;
 }
 ul.tn-nav li:hover {
   background-color: #272444;

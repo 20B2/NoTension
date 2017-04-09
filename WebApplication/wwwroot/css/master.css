@@ -366,6 +366,7 @@ ul.tn-add-info li button {
   cursor: pointer;
 }
 .comments {
+  padding: 0px;
   margin-top: -10px;
   margin-left: -15px;
   margin-right: -15px;
@@ -375,16 +376,22 @@ ul.tn-add-info li button {
   border-top: none;
   background-color: #fff;
 }
-.comments li {
+.comments .comments-box {
+  padding: 10px;
+}
+.comments .comments-box li {
   padding: 5px;
   padding-left: 0px;
   list-style: none;
   color: #272444;
   position: relative;
 }
-.comments li.tn-cmt-name {
+.comments .comments-box li.tn-cmt-name {
   font-size: 15px;
   text-align: justify;
+}
+.comments .comments-box li.tn-cmt {
+  background-color: ;
 }
 /*post feed panel end*/
 /*tool tip*/
