@@ -58,9 +58,10 @@
         <ul class="tn-feed-data-footer list-inline">
             <li>
                 <form asp-action="IncrementLike" method="post">
-                    <input type="submit" name="Like" value="Like"/>
+                    <a href="#">Like</a>
                 </form>
-                           
+                
+            
             </li>
 
             <li>
@@ -70,9 +71,13 @@
 
               @item.CommentsCounts Comments
            
-            @*@await Component.InvokeAsync("FeedForm")*@
+            @await Component.InvokeAsync("FeedForm")
         
-   
+                
+                @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
+                {
+                    @await Component.InvokeAsync("CommentDetails", @item.Comments.ToList())
+                }*@
                </li>
             
         </ul>
@@ -84,3 +89,4 @@
 }
 
 
+    

@@ -12,7 +12,9 @@
 
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/main.css" />
-        <link rel="stylesheet" href="~/css/master.css" />
+        
+        <link href="~/css/master.min.css" rel="stylesheet" />
+           
 
     </environment>
     <environment names="Staging,Production">
@@ -24,7 +26,8 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/master.css" />
-</environment>
+
+    </environment>
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top" data-spy="affix">
@@ -37,16 +40,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a asp-area="Feed" asp-controller="Feed" asp-action="Index" class="navbar-brand">BrainApp</a>
+                <a asp-area="" asp-controller="Home" asp-action="Index" class="navbar-brand">BrainApp</a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li><a asp-area="Feed" asp-controller="Feed" asp-action="Index">Home</a></li>
+                    <li><a asp-area="/" asp-controller="Home" asp-action="Index">Home</a></li>
                 </ul>
              @await Component.InvokeAsync("LoginStatus")
             </div>
         </div>
-        
+
+
     </div>
 
     <div class="">
