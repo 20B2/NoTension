@@ -11,9 +11,11 @@ namespace WebApplication.Core.Domains.Feed
     public class FeedItem : BaseEntity
     {
         public bool IsPublished { get; set; } = true;
+        [Required]
         public string StatusType { get; set; }
-
+        [Required]
         public FeedItemType Type { get; set; }
+        [Required]
         public string Text { get; set; }
 
         public string OperationStatus { get; set; } = $"Process";

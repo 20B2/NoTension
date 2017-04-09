@@ -46,8 +46,7 @@ namespace WebApplication.Areas.Feed.Controllers
                         
             return View();
         }
-
-
+        
   
         [HttpPost]
         public IActionResult PublishedPost(FeedPostViewModel model)
@@ -120,16 +119,17 @@ namespace WebApplication.Areas.Feed.Controllers
 
         }
    
-        public async Task<IActionResult> IncrementLike(Like model)
+        public async Task<IActionResult> IncrementLike(FeedItem likeitem)
         {           
             var feed = await _feedItemRepository.Get(GetCurrentUserId()); //feedId
+           
+            var model = _mapper.Map<FeedItem, Like>(likeitem);
 
-            //if (feed.Likes.Contains(feed))
-            //{
-            //    model.UserId = GetCurrentUserId();
-            //    _feedItemRepository.IncrementLike(model);
-            //}
-                return View();
+            model.UserId = GetCurrentUserId();
+            feed.Likes.Add(model);
+            _feedItemRepository.IncrementLike(model); // need to check already like or not
+
+            return View();
         }
    
         public IActionResult DecrementLike(Like model)
@@ -142,10 +142,12 @@ namespace WebApplication.Areas.Feed.Controllers
 
 
         [HttpPost]
-        public IActionResult PublishComment(Comment model)
+        public IActionResult PublishComment(FeedItem model)
         {
-            model.UserId = GetCurrentUserId();
-            _feedItemRepository.PublishComment(model);
+            var comment = _mapper.Map<Comment>(model);
+
+            comment.UserId = GetCurrentUserId();
+            _feedItemRepository.PublishComment(comment);
             return View();
         }
  

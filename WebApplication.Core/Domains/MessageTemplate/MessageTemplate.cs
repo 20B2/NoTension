@@ -11,7 +11,9 @@ namespace WebApplication.Core.Domains.MessageTemplate
     {
         [Required]
         public string MessageTemplateTypeID { get; set; }
+        [Required]
         public string Subject { get; set; }
+        [Required]
 
         public string Body { get; set; }
 

@@ -190,12 +190,23 @@ namespace WebApplication
                 routes.MapRoute(
                    name: "areaRoute",
                    template: "{area:exists}/{controller}/{action}/{id?}",
-                   defaults: new { controller = "Dashboard", action = "Index" });
+                   defaults: new { controller = "Home", action = "Index" });
                     
                 routes.MapRoute(
                     name: "default",
                     template: "{controller}/{action}/{id?}",
                     defaults: new { controller = "Home", action = "Index" });
+
+                routes.MapRoute(
+                    name: "feed",
+                    template: "feed/{action}/{id?}",
+                    defaults: new {area="Feed",  controller = "Feed", action = "Index" });
+
+                routes.MapRoute(
+                name: "admin",
+                template: "admin/{action}/{id?}",
+                defaults: new { area = "Admin", controller = "Dashboard", action = "Index" });
+
 
                 //routes.MapRoute(
                 //     name: "api",
