@@ -4,8 +4,46 @@
         <li>
             <a asp-controller="Manage" asp-action="Index" title="Manage">Hello @Model.Email!</a>
         </li>
-        <li>
-            <button type="submit" class="btn btn-link navbar-btn navbar-link">Log off</button>
+        <li class="tn-dropdown">
+            <a href="#">
+                <i class="fa fa-bell"></i>
+                <span class="tn-notification-badge">4</span>
+            </a>
+            <ul class="tn-dropdown-toggle tn-notification-panel">
+                <li>
+                    <div class="tn-notification-panel-title">
+                        <span>Notification</span>
+                        <span class="pull-right"><a href="#">Mark as Read</a></span>
+                    </div>
+                    <div class="tn-notification-panel-body">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="tn-notification-panel-footer">
+                        <a href="#">Show all Notification</a>
+                    </div>
+                </li>
+            </ul>
         </li>
 
         <li class="dropdown">

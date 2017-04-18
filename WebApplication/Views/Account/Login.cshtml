@@ -11,9 +11,35 @@
     ViewData["Title"] = "Log in";
 }
 
-<h2 class="sr-only">@ViewData["Title"]</h2>
+<ul class="tn-panel">
+    <li class="tn-panel-title">
+        Login
+    </li>
+    <li class="form-group">
+        <input type="text" class="form-control" placeholder="Email"/>
+    </li>
+    <li class="form-group">
+        <input type="password" class="form-control"  placeholder="Password"  />
+    </li>
+    <li>
+        <input type="checkbox"  />
+        Remember me
+    </li>
+    <li>
+        <button type="submit" class="tn-btn form-control">Log in</button>
+    </li>
+    <li class="tn-forget-pass">
+        <a href="#">Forgot password?</a>
+    </li>
+    <li class="tn-social-login">
+        Sign in using
+        <a href="#" class="tn-btn fb">Facebook</a>
+        <a href="#" class="tn-btn twitter">Twitter</a>
+        <a href="#" class="tn-btn gplus">Google +</a>
+    </li>
+</ul>
 
-<div class="page-auth text-center">
+@*<div class="page-auth text-center">
     <div class="login-box center-block">
         <h3 class="text-center">Log in</h3>
 
@@ -113,7 +139,7 @@
 
     </div>
 
-</div>
+</div>*@
 
 @section Scripts {
     @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
