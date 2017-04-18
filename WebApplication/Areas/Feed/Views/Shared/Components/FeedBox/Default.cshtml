@@ -16,7 +16,8 @@
         <div class="row tn-feed-row">
             <ul class="tn-feed-data list-inline">
                 <li class="">
-                    Mahesh Sunuwar 
+                    Mahesh Sunuwar
+                    <span class="tn-unim-text">time ago</span>
                    
                         <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                         <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -24,7 +25,7 @@
 
                     
                     </li>
-                <li>                    
+                <li class="tn-unim-text">                    
                                     
                     @*@if (item != null && item.StatusType.Contains(StatusTypes.ToString()))
                     { 
@@ -33,7 +34,7 @@
 
                     @item.StatusType
                 </li>
-                <div class="pull-right">
+                <div class="pull-right tn-unim-text">
                     <li>
                        @item.UpdatedAgo
                     </li>

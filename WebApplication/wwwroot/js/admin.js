@@ -41,10 +41,10 @@ $('.tn-body-content').on('click', function () {
             'display': 'block'
         });
         $('.tn-body-content').removeClass('tn-header-body-toggle');
-
-
-    
-      
-
 });
 
+
+/*dropdown toggle*/
+
+
+/*dropdown toggle end*/
