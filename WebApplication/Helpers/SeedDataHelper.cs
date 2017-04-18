@@ -20,7 +20,7 @@ namespace WebApplication.Helpers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public SeedDataHelper(ApplicationDbContext context, 
+        public SeedDataHelper(ApplicationDbContext context,
             UserManager<IdentityUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
@@ -32,14 +32,14 @@ namespace WebApplication.Helpers
         public async void Initialize()
         {
             var user = new IdentityUser
-            { 
+            {
                 Email = $"admin@example.com",
                 UserName = $"admin@example.com",
                 EmailConfirmed = true,
-                LockoutEnabled = false           
+                LockoutEnabled = false
             };
-         
-            if ((_context.RoleCollection.Count("{}") == 0)==true)
+
+            if ((_context.RoleCollection.Count("{}") == 0) == true)
             {
                 var Roles = new List<IdentityRole>()
                 {
@@ -48,7 +48,7 @@ namespace WebApplication.Helpers
                     new IdentityRole { Name = "Domain Expert" },
                     new IdentityRole { Name = "Country Manager" },
                 };
-             
+
 
                 foreach (var role in Roles)
                 {
@@ -56,12 +56,12 @@ namespace WebApplication.Helpers
                     await _roleManager.CreateAsync(role);
 
                 }
-                               
+
             }
 
             if ((_context.UserCollection.Count("{}") == 0) == true)
             {
-             
+
                 await _userManager.CreateAsync(user, $"Admin123!@#");
                 await _userManager.AddToRoleAsync(user, "Admin");
 
@@ -97,6 +97,6 @@ namespace WebApplication.Helpers
 
         }
 
-        
+
     }
 }
