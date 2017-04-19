@@ -542,6 +542,7 @@ ul.tn-add-info li button {
   background-color: #403b6b;
   color: white;
   padding: 5px;
+<<<<<<< HEAD
   text-align: center;
   font-weight: normal;
 }
@@ -593,4 +594,109 @@ ul.tn-add-info li button {
   margin-bottom: 10px;
 }
 /*error*/
+=======
+}
+/*notification*/
+.tn-dropdown {
+  color: white;
+}
+.tn-dropdown:hover > .tn-notification-panel {
+  display: block;
+}
+.tn-dropdown .tn-notification-badge {
+  position: absolute;
+  margin-top: -25px;
+  margin-left: 15px;
+}
+.tn-dropdown .tn-notification-panel {
+  right: 0;
+  min-width: 250px !important;
+  position: absolute;
+  display: none;
+}
+.tn-dropdown .tn-notification-panel li {
+  padding: 0px !important;
+  background-color: white;
+  text-align: left;
+  list-style: none;
+}
+.tn-dropdown .tn-notification-panel li:hover {
+  background-color: white !important;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-title {
+  background-color: #403b6b;
+  padding: 10px;
+  color: white;
+  box-shadow: 0px 10px 30px 0px #272444;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-title span a {
+  color: white;
+  text-decoration: none;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-title span:nth-child(2) {
+  font-size: 10px;
+  text-align: right !important;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-body {
+  max-height: 250px;
+  overflow-y: scroll;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-body ul li {
+  padding: 15px !important;
+  list-style: none;
+  margin-left: -41px;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-body ul li:hover {
+  background-color: #ddd !important;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-body ul li a {
+  color: #403b6b;
+  text-decoration: none;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-footer {
+  padding: 10px;
+  background-color: #403b6b;
+  text-align: center;
+}
+.tn-dropdown .tn-notification-panel li .tn-notification-panel-footer a {
+  color: white;
+  text-decoration: none;
+}
+/*notification end*/
+/*login-register*/
+.tn-panel {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  /*min-width: 100px;
+    max-width: 250px;*/
+  background-color: white;
+  border: 1px solid #403b6b;
+  padding-left: 0px;
+}
+.tn-panel li {
+  list-style: none;
+}
+.tn-panel li.tn-panel-title {
+  background-color: #403b6b;
+  padding: 15px;
+  width: 100%;
+  color: white;
+  margin-bottom: 5px;
+}
+.tn-panel li input.form-control {
+  min-width: 100% !important;
+}
+.tn-panel li a {
+  text-decoration: none;
+}
+.tn-panel li a:hover {
+  color: white;
+}
+/*login-register*/
+/*extra*/
+.tn-unim-text {
+  font-size: 10px;
+}
+>>>>>>> 9a9c16a56937cf2fa42337cfaec975fcba9c3387
 /*extra*/
