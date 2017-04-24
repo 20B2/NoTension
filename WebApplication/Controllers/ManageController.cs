@@ -20,6 +20,7 @@ namespace WebApplication.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
         private readonly IMapper _mapper;
+        IdentityUser currentUser;
 
         public ManageController(
         UserManager<IdentityUser> userManager,
@@ -36,7 +37,6 @@ namespace WebApplication.Controllers
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
             _mapper = mapper;
-
         }
 
         //
@@ -380,9 +380,15 @@ namespace WebApplication.Controllers
         }
         
         [HttpGet]
-        public IActionResult EditUserName()
+        public async Task<IActionResult> EditUserName()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                UserName = user.UserName
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -402,9 +408,16 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditName()
+        public async Task<IActionResult> EditName()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -425,9 +438,15 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditBirthCountry()
+        public async Task<IActionResult> EditBirthCountry()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                BirthCountry = user.BirthCountry
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -447,9 +466,15 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditCurrentCountry()
+        public async Task<IActionResult> EditCurrentCountry()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                CurrentCountry = user.CurrentCountry
+            };
+
+            return View(model);
         }
 
         [HttpPost]
@@ -469,9 +494,15 @@ namespace WebApplication.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditDateOfBirth()
+        public async Task<IActionResult> EditDateOfBirth()
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                DateOfBirth = user.DateOfBirth
+            };
+
+            return View(model);
         }
 
         [HttpPost]

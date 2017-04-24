@@ -4,7 +4,7 @@
 <form asp-controller="Manage" asp-action="EditCurrentCountry" method="post" class="form-horizontal" role="form">
     <div>
         <label asp-for="CurrentCountry"></label>
-        <input asp-for="CurrentCountry" />
+        <input asp-for="CurrentCountry" value="@Model.CurrentCountry"/>
     </div>
     <button type="submit">Update</button>
     <button type="submit" asp-action="CancelEdit">Cancel</button>

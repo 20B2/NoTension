@@ -28,7 +28,7 @@ namespace WebApplication.Helpers
 
             CreateMap<IdentityUser, AccountSettingViewModel>();
             CreateMap<IdentityUser, ProfileViewModel>().ReverseMap();
-            CreateMap<IdentityUser, IndexViewModel>().ReverseMap();
+            CreateMap<IndexViewModel, IdentityUser>().ReverseMap();
             CreateMap<IdentityUser, EditProfileViewModel>().ReverseMap();
                
 

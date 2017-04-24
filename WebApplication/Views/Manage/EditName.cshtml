@@ -4,11 +4,11 @@
 <form asp-controller="Manage" asp-action="EditName" method="post" class="form-horizontal" role="form">
     <div>
         <label asp-for="FirstName"></label>
-        <input asp-for="FirstName" />
+        <input asp-for="FirstName" value="@Model.FirstName"/>
     </div>
     <div>
         <label asp-for="LastName"></label>
-        <input asp-for="LastName" />
+        <input asp-for="LastName" value="@Model.LastName"/>
     </div>
     <button type="submit">Update</button>
     <button type="submit" asp-action="CancelEdit">Cancel</button>
