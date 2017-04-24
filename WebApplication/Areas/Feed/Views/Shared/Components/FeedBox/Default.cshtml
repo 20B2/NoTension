@@ -12,15 +12,20 @@
 
 <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="tn-feedbox">
         <div class="row tn-feed-row">
             <ul class="tn-feed-data list-inline">
-                <li>
-                    Mahesh Sunuwar <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </li>
-                <li>                    
+                <li class="">
+                    Mahesh Sunuwar
+                    <span class="tn-unim-text">time ago</span>
+                   
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+
+                    
+                    </li>
+                <li class="tn-unim-text">                    
                                     
                     @*@if (item != null && item.StatusType.Contains(StatusTypes.ToString()))
                     { 
@@ -29,7 +34,7 @@
 
                     @item.StatusType
                 </li>
-                <div class="pull-right">
+                <div class="pull-right tn-unim-text">
                     <li>
                        @item.UpdatedAgo
                     </li>
@@ -59,19 +64,25 @@
             <li>
                 <form asp-action="IncrementLike" method="post">
                     <a href="#">Like</a>
+                    <span>
+                        @item.LikesCounts 
+                    </span>
                 </form>
                 
             
             </li>
 
             <li>
-                <span>
-                    @item.LikesCounts  Likes
-                </span>
-
-              @item.CommentsCounts Comments
+               
+                <div class="comment">
+                    Comment
+                    <span>
+                        @item.CommentsCounts
+                    </span>
+                </div>
+                
            
-            @await Component.InvokeAsync("FeedForm")
+           
         
                 
                 @*@if (string.IsNullOrEmpty(@item.Comments.ToString()))
@@ -80,6 +91,35 @@
                 }*@
                </li>
             
+        </ul>
+        <ul class="comments">
+            <div class="comments-box">
+                <li class="tn-cmt-name">Commenters Name</li>
+                <li class="tn-cmt">
+                    Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                    Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                </li>
+            </div>
+            <div class="comments-box">
+                <li class="tn-cmt-name">Commenters Name</li>
+                <li class="tn-cmt">
+                    Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                    Tincidunt integer eu augue augue nunc elit dolor, luctus placerat scelerisque euismod, iaculis eu lacus nunc mi elit, vehicula ut laoreet ac, aliquam sit amet justo nunc tempor, metus vel.
+                </li>
+            </div>
+                <hr />
+                <li>
+                    <form action="/" method="post">
+
+                        <textarea class="form-control">asdfadf</textarea>
+                        <button type="submit" class="tn-btn">Comment</button>
+
+
+
+                    </form>
+                </li>
+            
+           
         </ul>
     </div>
     <div class="col-md-3"></div>

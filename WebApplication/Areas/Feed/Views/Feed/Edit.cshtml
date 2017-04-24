@@ -4,75 +4,81 @@
     ViewData["Title"] = "Edit";
 }
 
-<h2>Edit</h2>
+<div class="container">
+    <div class="col-md-12">
+        
 
-<form asp-action="Edit">
-    <div class="form-horizontal">
-        <h4>FeedItem</h4>
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <div class="checkbox">
-                    <input asp-for="IsPublished" />
-                    <label asp-for="IsPublished"></label>
+        <form asp-action="Edit">
+            <div class="form-horizontal">
+
+                
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <div class="checkbox">
+                            <input asp-for="IsPublished" type="checkbox" />
+                            <label asp-for="IsPublished"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="OperationStatus" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="OperationStatus" class="form-control" />
+                        <span asp-validation-for="OperationStatus" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PublishedDate" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <select asp-for="PublishedDate" class="form-control"></select>
+                        <span asp-validation-for="PublishedDate" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PublishedUserId" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="PublishedUserId" class="form-control" />
+                        <span asp-validation-for="PublishedUserId" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Image" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="Image" class="form-control" />
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PreciseText" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="PreciseText" class="form-control" />
+                        <span asp-validation-for="PreciseText" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label asp-for="PreciseTextByUserId" class="col-md-2 control-label"></label>
+                    <div class="col-md-10">
+                        <input asp-for="PreciseTextByUserId" class="form-control" />
+                        <span asp-validation-for="PreciseTextByUserId" class="text-danger"></span>
+                    </div>
+                </div>
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Save" class="btn btn-default" />
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="OperationStatus" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="OperationStatus" class="form-control" />
-                <span asp-validation-for="OperationStatus" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PublishedDate" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="PublishedDate" class="form-control"></select>
-                <span asp-validation-for="PublishedDate" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PublishedUserId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PublishedUserId" class="form-control" />
-                <span asp-validation-for="PublishedUserId" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Image" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Image" class="form-control" />
-                <span asp-validation-for="Image" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PreciseText" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PreciseText" class="form-control" />
-                <span asp-validation-for="PreciseText" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PreciseTextByUserId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="PreciseTextByUserId" class="form-control" />
-                <span asp-validation-for="PreciseTextByUserId" class="text-danger"></span>
-            </div>
-        </div>
-    <input type="hidden" asp-for="Id" />
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
         </div>
     </div>
-</form>
-
-<div>
-    <a asp-action="Index">Back to List</a>
+    
 </div>
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

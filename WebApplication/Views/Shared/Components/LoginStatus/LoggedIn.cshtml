@@ -6,6 +6,46 @@
         </li>
         <li>
             <button type="submit" class="btn btn-link navbar-btn navbar-link" asp-area="" asp-controller="Account" asp-action="LogOff">Log off</button>
+        <li class="tn-dropdown">
+            <a href="#">
+                <i class="fa fa-bell"></i>
+                <span class="tn-notification-badge">4</span>
+            </a>
+            <ul class="tn-dropdown-toggle tn-notification-panel">
+                <li>
+                    <div class="tn-notification-panel-title">
+                        <span>Notification</span>
+                        <span class="pull-right"><a href="#">Mark as Read</a></span>
+                    </div>
+                    <div class="tn-notification-panel-body">
+                        <ul>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h4>Notification title</h4>
+                                    <p>notification body</p>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </div>
+                    <div class="tn-notification-panel-footer">
+                        <a href="#">Show all Notification</a>
+                    </div>
+                </li>
+            </ul>
         </li>
 
         <li class="dropdown">
@@ -17,9 +57,9 @@
             </a>
 
             <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu">
-                <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" tabindex="-1">Profile</a></li>
+                <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" tabindex="-1">Dashboard</a></li>
                 <li><a asp-area="Profile" asp-controller="Profile" asp-action="Index" tabindex="-1">Profile</a></li>
-                <li><a asp-controller="Manage" asp-action="Index" tabindex="-1">Manage</a></li>
+                <li><a asp-area="" asp-controller="Manage" asp-action="Index" tabindex="-1">Manage</a></li>
                 <li><a asp-area="/" asp-controller="Help" asp-action="Index" tabindex="-1">Help</a></li>
                 <li class="divider"></li>
                 <li><a asp-area="" asp-controller="Account" asp-action="LogOff" tabindex="-1">Sign Out</a></li>

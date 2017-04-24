@@ -12,7 +12,7 @@
     border: none;
     border-radius: 0px 0px 0px 0px;
     background-color: @navcolor;
-    box-shadow: 0px 8px 50px 0px;
+    box-shadow: 0px 2px 15px 0px;
 
     ul {
         li {
@@ -226,6 +226,8 @@ body {
     margin-top: 10px;
     padding: 0px;
 
+   
+
     .setting-title, .setting-detail-title {
         border-bottom: 2px solid @bodybgcolor;
         margin-left: 0px;
@@ -233,24 +235,53 @@ body {
         font-size: medium;
     }
 
-    .setting-menu-name {
-        li {
-            padding: 10px;
-            list-style: none;
 
-            &:hover, &:active, &:focus, &:visited {
+    >li {
+        float: none;
+        padding: 10px;
+        list-style: none;
+        color:@navfocuscolor;
+
+        &:hover, &:active, &:focus, &:visited {
+            background-color: #d8d8de !important;
+            border:none;
+        }
+
+        a {
+            text-decoration: none;
+            color: @navfocuscolor !important;
+        }
+    }
+}
+
+
+
+
+
+ .nav-tabs > li.active > a , .nav-tabs > li >a {
+    
+    background-color: #f4f4f5;
+    border: none;
+   }
+.nav-tabs {
+    >li {
+        &:hover {
+            >a {
                 background-color: #d8d8de;
-            }
-
-            a {
-                text-decoration: none;
-                color: @navfocuscolor;
             }
         }
     }
+}
+
+ .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    background-color: #d8d8de;
+    border: none;
+}
+
 
 
     .setting-detail {
+
 
         .setting-detail-detail {
             padding: 0px;
@@ -286,111 +317,131 @@ body {
             }
         }
     }
-}
-/*profile-setting-menu-end*/
-/*profile end*/
 
 
-/*post panel*/
-.tn-post-row{
-    padding-top:15px;
-    padding-bottom:12px;
-    background-color: white;
-    border-radius: 5px 5px 0px 0px;
-    .tn-profile-photo{
-        height:30px;
-        width:30px;
-        border:1px solid black;
-    }
-    .tn-profile-textarea{
-        
-    }
-   
-}
-.tn-textarea {
-    min-width: 100%;
-    min-height: 20px;
-    border:none;
 
-    &:focus, &:active {
-        min-height: 80px;
+    .setting-expand {
+        display: none;
     }
-    
-}
-.tn-post-type-selection {
-    span {
-        select {
-            padding: 5px;
-            border:none;
+
+    .dispaly-none {
+        display: none !important;
+    }
+
+    .display-block {
+        display: block !important;
+    }
+    /*profile-setting-menu-end*/
+    /*profile end*/
+    /*post panel*/
+    .tn-post-row {
+        padding-top: 15px;
+        padding-bottom: 12px;
+        background-color: white;
+        border-radius: 5px 5px 0px 0px;
+
+        .tn-profile-photo {
+            height: 30px;
+            width: 30px;
+            border: 1px solid black;
+        }
+
+        .tn-profile-textarea {
         }
     }
-}
-ul.tn-add-info {
-    background-color: @feedboxcolor;
-    margin-left: -15px;
-    margin-right: -15px;
-    list-style-type: none;
-  
-    overflow:hidden;
-    
-  
 
-    li {
-        float: left;
-        padding:10px;
-        &:hover{
-            background-color:@navfocuscolor;
-        }
-        a {
-            color:white;
-            display: block;
-            text-decoration: none;
-        }
-        button{
-            background-color:transparent;
-            border:none;
-            color:white;
+    .tn-textarea {
+        min-width: 100%;
+        min-height: 20px;
+        border: none;
+
+        &:focus, &:active {
+            min-height: 80px;
         }
     }
-}
-/*pst panel end*/
 
-/*post feed panel*/
-.tn-feed-row {
-    background-color: white;
-    padding-bottom:0px;
-   
-    .tn-feed-data {
+    .tn-post-type-selection {
+        span {
+            select {
+                padding: 5px;
+                border: none;
+            }
+        }
+    }
+
+    ul.tn-add-info {
         background-color: @feedboxcolor;
-        margin-left:0px;
-        padding-bottom:0px;
+        margin-left: -15px;
+        margin-right: -15px;
+        list-style-type: none;
+        overflow: hidden;
+
+
+
         li {
+            float: left;
             padding: 10px;
-            color:white;
-            list-style:none;
+
             &:hover {
-               
+                background-color: @navfocuscolor;
             }
 
-            
+            a {
+                color: white;
+                display: block;
+                text-decoration: none;
+            }
+
+            button {
+                background-color: transparent;
+                border: none;
+                color: white;
+            }
         }
     }
-}
-.tn-post-text {
-    margin-top: -7px;
-    padding: 15px;
+    /*pst panel end*/
+    /*post feed panel*/
+    .tn-feed-row {
+        background-color: white;
+        padding-bottom: 0px;
 
-    .tn-status-text {
-        text-align: justify;
+        .tn-feed-data {
+            background-color: @feedboxcolor;
+            margin-left: 0px;
+            padding-bottom: 0px;
+
+            li {
+                padding: 10px;
+                color: white;
+                list-style: none;
+
+                &:hover {
+                }
+                a{
+                    color:white;
+                    text-decoration:none;
+                    padding-left:5px;
+                    font-size:smaller;
+                }
+            }
+        }
     }
-}
+
+    .tn-post-text {
+        margin-top: -7px;
+        padding: 15px;
+
+        .tn-status-text {
+            text-align: justify;
+        }
+    }
 
 
 .tn-feed-data-footer {
     background-color: @feedboxcolor;
     margin-left: -15px;
     margin-right: -15px;
-    box-shadow: black 0px 8px 50px 0px;
+    box-shadow: black 0px 2px 10px 0px;
 
     li {
         padding: 10px;
@@ -405,20 +456,211 @@ ul.tn-add-info {
             text-decoration: none;
             color: white;
         }
+        .comment{
+            cursor:pointer;
+        }
+
+        
     }
 }
-/*post feed panel end*/
+.comments {
+    padding: 0px;
+    margin-top: -10px;
+    margin-left: -15px;
+    margin-right: -15px;
+    display: none;
+    border: 1px solid @feedboxcolor;
+    border-radius: 0px 0px 5px 5px;
+    border-top: none;
+    background-color: #fff;
 
-/*tool tip*/
+    .comments-box {
+        padding:10px;
+        li {
+            //margin-left:0;
+            padding: 5px;
+            padding-left: 0px;
+            list-style: none;
+            color: @navfocuscolor;
+            position: relative;
 
-/*tool-tip*/
+            &.tn-cmt-name {
+                font-size: 15px;
+                text-align: justify;
+            }
 
+            &.tn-cmt {
+                background-color:;
+            }
 
-
-/*to be deleted*/
-.photo{
-    width:80px;
-    height:80px;
-    border:1px solid grey;
+            form {
+                button {
+                }
+            }
+        }
+    }
 }
-/*to be deleted end*/
+    /*post feed panel end*/
+    /*tool tip*/
+    /*tool-tip*/
+    /*to be deleted*/
+    .photo {
+        width: 80px;
+        height: 80px;
+        border: 1px solid grey;
+    }
+    /*to be deleted end*/
+
+    /*extra*/
+    .db{
+        display:block !important;
+    }
+
+
+
+    .tn-btn{
+        border:none;
+        background-color:@navfocuscolor;
+        color:white;
+        padding:5px;
+        
+        &:focus,&:active{
+
+        }
+    }
+
+
+/*notification*/
+.tn-dropdown {
+
+    color:white;
+    &:hover{
+        >.tn-notification-panel{
+            display:block;
+        }
+    }
+    .tn-notification-badge {
+        position: absolute;
+        margin-top: -25px;
+        margin-left: 15px;
+
+    }
+
+    .tn-notification-panel {
+        right: 0;
+        min-width: 250px !important;
+        position:absolute;
+        display:none;
+
+        li {
+            padding: 0px !important;
+            background-color: white;
+            text-align: left;
+            list-style:none;
+
+            &:hover {
+                background-color: white !important;
+            }
+
+            .tn-notification-panel-title {
+                background-color: @navcolor;
+                padding: 10px;
+                color: white;
+                box-shadow: 0px 10px 30px 0px @navfocuscolor;
+
+                span {
+                    
+                    a{
+                        color:white;
+                        text-decoration:none;
+                    }
+                    
+                    &:nth-child(2) {
+                        font-size: 10px;
+                        text-align:right !important;
+                    }
+                }
+            }
+
+            .tn-notification-panel-body {
+                max-height: 250px;
+                overflow-y: scroll;
+
+                ul {
+                    li {
+                        padding: 15px !important;
+                        list-style:none;
+                        margin-left:-41px;
+                        &:hover {
+                            background-color: #ddd !important;
+                        }
+
+                        a {
+                            color: @navcolor;
+                            text-decoration:none;
+                        }
+                    }
+                }
+            }
+
+            .tn-notification-panel-footer {
+                padding: 10px;
+                background-color: @navcolor;
+                text-align:center;
+                a{
+                    color:white;
+                    text-decoration:none;
+
+                }
+            }
+        }
+    }
+}
+
+
+
+/*notification end*/
+
+/*login-register*/
+.tn-panel {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //align-items: center;
+    /*min-width: 100px;
+    max-width: 250px;*/
+    background-color: white;
+    border: 1px solid @navcolor;
+    padding-left: 0px;
+
+    li {
+        list-style: none;
+
+        &.tn-panel-title {
+            background-color: @navcolor;
+            padding: 15px;
+            width: 100%;
+            color: white;
+            margin-bottom:5px;
+        }
+        input{
+             &.form-control{
+            min-width:100% !important;
+        }
+        }
+       a{
+           text-decoration:none;
+           &:hover{
+               color:white;
+           }
+       }
+    }
+}
+
+/*login-register*/
+
+/*extra*/
+.tn-unim-text{
+    font-size:10px;
+}
+/*extra*/

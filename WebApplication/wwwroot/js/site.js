@@ -46,7 +46,28 @@
 
 /*dropdown open*/
 
-$(".dopen").on('click', function () {
+$(".dopen").click(function () {
     $(this).toggleClass('open');
 });
 
+/*setting expanded*/
+
+
+$(".nav-tabs a").click(function () {
+  
+    $(this).tab('show');
+
+    
+
+    });
+
+
+/*setting expanded end*/
+
+
+/*comment hide and show*/
+
+$('.comment').click(function () {
+    $(this).offsetParent('div#tn-feedbox').children('ul.comments').toggleClass('display-block');    
+});
+/*comments hide and shwo end*/

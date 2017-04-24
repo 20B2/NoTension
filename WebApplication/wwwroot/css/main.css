@@ -10,7 +10,7 @@ body {
 
 /* Set some basic padding to keep content from hitting the edges */
 
-.body-content {
+.body-content 
     padding-left: 15px;
     padding-right: 15px;
 }
@@ -508,131 +508,6 @@ c-g {
 
 /*#region login register */
 
-.login-box {
-    margin-top: 15px;
-}
-
-.page-auth .logo {
-    margin-bottom: 40px;
-}
-
-.page-auth .separator {
-    margin: 30px auto;
-    position: relative;
-    width: 100%;
-}
-
-.page-auth .separator:before {
-    display: inline-block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
-    content: "";
-    vertical-align: middle;
-    height: 0;
-    border-top: 1px solid #ddd;
-    position: absolute;
-    top: 9px;
-    left: 10px;
-    right: 10px;
-}
-
-.page-auth .separator span {
-    display: inline-block;
-    vertical-align: middle;
-    *vertical-align: auto;
-    *zoom: 1;
-    *display: inline;
-    position: relative;
-    background-color: #ececec;
-    padding: 0 8px;
-}
-
-@media screen and (min-width: 768px) {
-    .page-auth .separator {
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .page-auth .separator {
-        width: 31%;
-    }
-}
-
-.page-auth .center-block {
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 25px;
-    text-align: left;
-    background-color: #f1f1f1;
-}
-
-.page-auth .center-block .title {
-    font-size: 1.2em;
-    line-height: 1;
-    margin-bottom: 15px;
-}
-
-.page-auth .center-block form>input {
-    margin-bottom: 15px;
-}
-
-.page-auth .center-block form>input:focus {
-    border-color: #ccc;
-}
-
-.page-auth .center-block .btn-auth {
-    margin-top: 20px;
-}
-
-.page-auth .center-block .links {
-    margin-top: 30px;
-    text-align: center;
-}
-
-.page-auth .center-block .links p {
-    margin-bottom: 0;
-    font-size: 0.9em;
-}
-
-.page-auth .center-block .links p a:hover {
-    text-decoration: none;
-}
-
-@media screen and (min-width: 768px) {
-    .page-auth .center-block {
-        width: 50%;
-    }
-}
-
-@media screen and (min-width: 992px) {
-    .page-auth .center-block {
-        width: 30%;
-    }
-}
-
-
-/*#endregion */
-
-
-/*#region form center */
-
-.form-center .center-block {
-    width: 50%;
-}
-
-.form-center .center-block {
-    width: 100%;
-    border: 1px solid #ddd;
-    padding: 25px;
-    text-align: center;
-    background-color: #f1f1f1;
-}
-
-
-/*#endregion */
 
 .mi-hi-40{
 min-height:40px;

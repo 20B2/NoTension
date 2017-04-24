@@ -23,8 +23,12 @@ namespace WebApplication.Helpers
             CreateMap<IdentityUser, UserViewModel>();
             CreateMap<IdentityRole, RoleViewModel>();
 
+            //CreateMap<IdentityUser, ProfileViewModel>();
+            //CreateMap<ProfileViewModel, IdentityUser>();
+
             CreateMap<IdentityUser, AccountSettingViewModel>();
-            CreateMap<IdentityUser, ProfileViewModel>().ReverseMap(); ;
+            CreateMap<IdentityUser, ProfileViewModel>().ReverseMap();
+            CreateMap<IdentityUser, IndexViewModel>().ReverseMap();
             CreateMap<IdentityUser, EditProfileViewModel>().ReverseMap();
                
 

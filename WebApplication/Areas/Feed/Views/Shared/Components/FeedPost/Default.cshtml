@@ -44,10 +44,7 @@
                     </div>
                     <div class="col-md-11">
                         <div class="tn-post-textarea">
-                            <textarea asp-for="Text" class="tn-textarea" placeholder="Whats on your mind?">
-                        
-                        </textarea>
-                            
+                            <textarea asp-for="Text" class="tn-textarea" placeholder="Whats on your mind?" required></textarea>
                             <span asp-validation-for="Text" class="text-danger"></span>
                         </div>
                         @*<div class="tn-upload">
@@ -56,9 +53,9 @@
                         <div class="tn-post-type-selection">
 
                             <span>
-                                <select asp-for="StatusType" asp-items="@(new SelectList(@ViewBag.StatusType,"Id","TypeName") )">
+                                <select asp-for="StatusType" asp-items="@(new SelectList(@ViewBag.StatusType,"Id","TypeName") )" required>
                                     <option selected disabled>
-                                        Problem Type
+                                        I need help from..
                                     </option>
                                 </select>
                                 <span asp-validation-for="StatusType" class="text-danger"></span>

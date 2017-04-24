@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -28,8 +29,6 @@ namespace WebApplication.Controllers
         protected readonly UserStore<IdentityUser, IdentityRole> _userStore;
         protected ApplicationDbContext _context;
 
-
-
         public AccountController(
             UserManager<IdentityUser> userManager,
             SignInManager<IdentityUser> signInManager,
@@ -45,6 +44,7 @@ namespace WebApplication.Controllers
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<AccountController>();
             _userStore = userStore;
+            
         }
 
 

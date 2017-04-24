@@ -53,7 +53,31 @@
                 </i>
                 <span>Profile</span>
                 <span><i class="fa fa-caret-down"></i></span>
-
+            <a asp-area="Admin" asp-controller="Roles" asp-action="Index">
+                 <i class="fa fa-home"></i>
+                <span>Roles</span>
+                <span class="fa fa-caret-down"></span>
+            </a>
+        </li>
+        <li>
+            <a aasp-area="Admin" asp-controller="Users" asp-action="Index">
+                 <i class="fa fa-user"></i>
+                <span>Users</span>
+                <span class="fa fa-caret-down"></span>
+            </a>
+        </li>
+        <li>
+            <a asp-area="Admin" asp-controller="StatusType" asp-action="Index">
+                 <i class="fa fa-type"></i>
+                <span>Status Type</span>
+                <span class="fa fa-caret-down"></span>
+            </a>
+        </li>
+        <li>
+            <a asp-area="Admin" asp-controller="MessageTemplate" asp-action="Index">
+                 <i class="fa fa-message"></i>
+                <span>Message Template</span>
+                <span class="fa fa-caret-down"></span>
             </a>
         </li>
 
@@ -106,6 +130,85 @@
                         <li>
                             asd
                         </li>
+                    @*<li class="close">
+                        <a href="#">
+                            <i class="fa fa-times"></i>
+                        </a>
+                    </li>*@
+                    <li>
+                        <a asp-area="/" asp-controller="Home" asp-action="Index">
+                           Home
+                        </a>
+                    </li>
+                    <div class="tn-login">
+                        @* notification area *@
+                        <li class="tn-dropdown">
+                            <a href="#">
+                                <i class="fa fa-bell"></i>
+                                <span class="tn-notification-badge">4</span>
+                            </a>
+                            <ul class="tn-dropdown-toggle tn-notification-panel">
+                                <li>
+                                    <div class="tn-notification-panel-title">
+                                        <span>Notification</span>
+                                        <span><a href="#">Mark as Read</a></span>
+                                    </div>
+                                    <div class="tn-notification-panel-body">
+                                        <ul>
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Notification title</h4>
+                                                    <p>notification body</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Notification title</h4>
+                                                    <p>notification body</p>
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="#">
+                                                    <h4>Notification title</h4>
+                                                    <p>notification body</p>
+                                                </a>
+                                            </li>
+                                           
+                                            
+                                        </ul>
+                                    </div>
+                                    <div class="tn-notification-panel-footer">
+                                        <a href="#">Show all Notification</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+
+                        @* notification area end*@
+                        <li class="tn-dropdown">
+                            <a
+                               href="#">
+                                <span>
+                                  Mahesh
+                                </span>
+                                <img class="img-circle" src="" alt="" height="22" width="22">
+                                <span class="fa fa-caret-down"></span>
+
+                            </a>
+
+                            <ul class="tn-dropdown-toggle">
+
+                               
+                                
+                                <li><a href="#">Profile</a></li>
+                                <li><a href="#">Manage</a></li>
+                                <li><a href="#">Help</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Logout</a></li>
+                            </ul>
+                        </li>
+                       
+
                     </div>
                 </ul>
             </div>
@@ -121,10 +224,33 @@
 
 
 
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="~/js/admin.js"></script>
 
 
     @RenderSection("scripts", required: false)
+
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/admin.js"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+        <script src="~/js/admin.js"></script>
+    </environment>
+
+    @RenderSection("scripts", required: false)
+   
 </body>
 </html>
