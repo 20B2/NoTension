@@ -127,7 +127,7 @@ namespace WebApplication.Areas.Feed.Controllers
             //if (feed.Likes.Contains(feed))
             //{
             //    model.UserId = GetCurrentUserId();
-            //    _feedItemRepository.IncrementLike(model);
+            //    _feedItemRepository.IncrementLike(model);t
             //}
                 return View();
         }

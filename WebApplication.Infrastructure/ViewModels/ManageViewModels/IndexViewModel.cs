@@ -33,6 +33,7 @@ namespace WebApplication.Infrastructure.ViewModels.ManageViewModels
         public string CurrentCountry { get; set; }
         [DataType(DataType.Date)]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTimeOffset? DateOfBirth { get; set; }
     }
 }
