@@ -6,15 +6,17 @@
     <title>@ViewData["Title"] - NoTension</title>
 
     <environment names="Development">
-                
+
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
-
+        <link href="~/css/layout.css" rel="stylesheet" />
         <link rel="stylesheet" href="~/css/site.css" />
         <link rel="stylesheet" href="~/css/main.css" />
-        
+
         <link href="~/css/master.min.css" rel="stylesheet" />
-           
+        <link href="~/css/layout.css" rel="stylesheet" />
+        <base href="/" />
+
 
     </environment>
     <environment names="Staging,Production">
@@ -26,7 +28,8 @@
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" asp-append-version="true" />
         <link rel="stylesheet" href="~/css/master.css" />
-
+        <link href="~/css/layout.css" rel="stylesheet" />
+        <base href="/" />
     </environment>
 </head>
 <body>
@@ -45,15 +48,32 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a asp-area="/" asp-controller="Home" asp-action="Index">Home</a></li>
+                    <li><a asp-area="Admin" asp-controller="Dashboard" asp-action="Index" tabindex="-1">Dashboard</a></li>
+
                 </ul>
-             @await Component.InvokeAsync("LoginStatus")
+                @await Component.InvokeAsync("LoginStatus")
             </div>
         </div>
 
 
     </div>
 
-    <div class="">
+    <div class="tn-title-nav container">
+        <ul class="container">
+            <li>
+                <a href="#">Feed</a>
+            </li>
+            <li>
+                <a href="#">Tech</a>
+            </li>
+            <li>
+                <a href="#">Positive</a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="tn-p-t-30">
         @RenderBody()
 
     </div>

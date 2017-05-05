@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Linq;
@@ -6,6 +7,7 @@ using System.Threading.Tasks;
 using WebApplication.Identity;
 using WebApplication.Infrastructure.Interface.Services;
 using WebApplication.Infrastructure.ViewModels.ManageViewModels;
+using WebApplication.Infrastructure.ViewModels.ProfileViewModels;
 using WebApplication.Services;
 
 namespace WebApplication.Controllers
@@ -17,14 +19,16 @@ namespace WebApplication.Controllers
         private readonly IEmailSender _emailSender;
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
+        private readonly IMapper _mapper;
+        IdentityUser currentUser;
 
         public ManageController(
         UserManager<IdentityUser> userManager,
         SignInManager<IdentityUser> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
-        ILoggerFactory loggerFactory
-       
+        ILoggerFactory loggerFactory,
+        IMapper mapper
         )
         {
             _userManager = userManager;
@@ -32,8 +36,7 @@ namespace WebApplication.Controllers
             _emailSender = emailSender;
             _smsSender = smsSender;
             _logger = loggerFactory.CreateLogger<ManageController>();
-
-
+            _mapper = mapper;
         }
 
         //
@@ -53,6 +56,13 @@ namespace WebApplication.Controllers
             var user = await GetCurrentUserAsync();
             var model = new IndexViewModel
             {
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                UserName = user.UserName,
+                Email = user.Email,
+                BirthCountry = user.BirthCountry,
+                CurrentCountry = user.CurrentCountry,
+                DateOfBirth = user.DateOfBirth,
                 HasPassword = await _userManager.HasPasswordAsync(user),
                 PhoneNumber = await _userManager.GetPhoneNumberAsync(user),
                 TwoFactor = await _userManager.GetTwoFactorEnabledAsync(user),
@@ -61,6 +71,13 @@ namespace WebApplication.Controllers
             };
             return View(model);
         }
+
+
+        //public IActionResult Index()
+        //{
+        //    return View();
+        //}
+
 
         //
         // POST: /Manage/RemoveLogin
@@ -321,6 +338,195 @@ namespace WebApplication.Controllers
             return RedirectToAction(nameof(ManageLogins), new { Message = message });
         }
 
+        //[HttpGet]
+        //public async Task<IActionResult> GetUserInfo()
+        //{
+        //    var user = await GetCurrentUserAsync();
+        //    if (user == null)
+        //    {
+        //        return View("Error");
+        //    }
+        //    //var model = _mapper.Map<IdentityUser, ProfileViewModel>(user);
+        //    //var model = _mapper.Map<ProfileViewModel>(user);
+
+        //    ProfileViewModel profilevm= new ProfileViewModel
+        //    {
+        //         Id = user.Id,
+        //         UserName = Task.FromResult(user.UserName),
+        //         FirstName = user.FirstName,
+        //         LastName = user.LastName,
+        //         Email = Task.FromResult(user.Email),
+        //         BirthCountry = user.BirthCountry,
+        //         CurrentCountry = user.CurrentCountry,
+        //         PhoneNumber = Task.FromResult(user.PhoneNumber),
+        //         DateOfBirth = user.DateOfBirth,
+        //         CreatedOn = user.CreatedOn
+        //    };
+
+        //    //return PartialView(model);
+
+        //    //return PartialView(profilevm);
+
+        //    //return View("_GeneralPartial", profilevm);
+        //    return View("Index", profilevm);
+        //    //return View(profilevm);
+
+        //}
+
+        #region EditGeneralProfile
+        public IActionResult CancelEdit()
+        {
+            return RedirectToAction("Index");
+        }
+        
+        [HttpGet]
+        public async Task<IActionResult> EditUserName()
+        {
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                UserName = user.UserName
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditUserName(IndexViewModel model)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user==null)
+            {
+                return View("Error");
+            }
+            if(ModelState.IsValid)
+            {
+                user.UserName = model.UserName;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditName()
+        {
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                FirstName = user.FirstName,
+                LastName = user.LastName
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditName(IndexViewModel model)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            if (ModelState.IsValid)
+            {
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditBirthCountry()
+        {
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                BirthCountry = user.BirthCountry
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBirthCountry(IndexViewModel model)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            if (ModelState.IsValid)
+            {
+                user.BirthCountry = model.BirthCountry;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditCurrentCountry()
+        {
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                CurrentCountry = user.CurrentCountry
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditCurrentCountry(IndexViewModel model)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            if (ModelState.IsValid)
+            {
+                user.CurrentCountry = model.CurrentCountry;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> EditDateOfBirth()
+        {
+            var user = await GetCurrentUserAsync();
+            var model = new IndexViewModel
+            {
+                DateOfBirth = user.DateOfBirth
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditDateOfBirth(IndexViewModel model)
+        {
+            var user = await GetCurrentUserAsync();
+            if (user == null)
+            {
+                return View("Error");
+            }
+            if (ModelState.IsValid)
+            {
+                user.DateOfBirth = model.DateOfBirth;
+                await _userManager.UpdateAsync(user);
+            }
+            return RedirectToAction("Index");
+        }
+        #endregion EditGeneralProfile
+
+        private async Task<IdentityUser> GetCurrentUserAsync()
+        {
+            return await _userManager.GetUserAsync(HttpContext.User);
+        }
+
         #region Helpers
 
         private void AddErrors(IdentityResult result)
@@ -343,11 +549,11 @@ namespace WebApplication.Controllers
             Error
         }
 
-        private Task<IdentityUser> GetCurrentUserAsync()
-        {
-            return _userManager.GetUserAsync(HttpContext.User);
-        }
+        //private Task<IdentityUser> GetCurrentUserAsync()
+        //{
+        //    return _userManager.GetUserAsync(HttpContext.User);
+        //}
 
-        #endregion
+        #endregion Helpers
     }
 }

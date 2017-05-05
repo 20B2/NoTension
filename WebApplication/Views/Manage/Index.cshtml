@@ -1,4 +1,6 @@
-﻿@*@using WebApplication.Infrastructure.ViewModels.ManageViewModels
+﻿@*@using WebApplication.Infrastructure.ViewModels.ProfileViewModels
+@model ProfileViewModel*@
+@using WebApplication.Infrastructure.ViewModels.ManageViewModels
 @model IndexViewModel
 
 @{
@@ -9,103 +11,191 @@
 
 @*<div>
 
-    <hr />
-    <div class="form-horizontal">
-        <div class="form-group">
-            <label class="col-sm-3 control-label ">Password</label>
-            <div class="col-sm-4">
-                @if (Model.HasPassword)
-            {
-                    <a asp-controller="Manage" asp-action="ChangePassword" class="btn btn-bracketed btn-primary">Change</a>
-                }
-                else
+        <hr />
+        <div class="form-horizontal">
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">Password</label>
+                <div class="col-sm-4">
+                    @if (Model.HasPassword)
                 {
-                    <a asp-controller="Manage" asp-action="SetPassword" class="btn btn-bracketed btn-primary">Create</a>
-                }
+                        <a asp-controller="Manage" asp-action="ChangePassword" class="btn btn-bracketed btn-primary">Change</a>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="SetPassword" class="btn btn-bracketed btn-primary">Create</a>
+                    }
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-sm-3 control-label ">External Logins</label>
-            <div class="col-sm-4">
-                <button class="btn btn-clean" disabled>@Model.Logins.Count</button>
-                <a asp-controller="Manage" asp-action="ManageLogins" class="btn btn-bracketed btn-custom-primary">Manage</a>
-
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">External Logins</label>
+                <div class="col-sm-4">
+                    <button class="btn btn-clean" disabled>@Model.Logins.Count</button>
+                    <a asp-controller="Manage" asp-action="ManageLogins" class="btn btn-bracketed btn-custom-primary">Manage</a>
 
 
+
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-sm-3 control-label ">Phone Number</label>
-            <div class="col-sm-4">
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">Phone Number</label>
+                <div class="col-sm-4">
 
-                @(Model.PhoneNumber ?? "None")
-                @if (Model.PhoneNumber != null)
-                {
-                    <br />
-                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn btn-primary btn-bracketed">Change</a>
-                    <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
-                        [<button type="submit" class="btn btn-link btn-primary">Remove</button>]
-                    </form>
-                }
-                else
-                {
-                    <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn btn-primary btn-bracketed">Add</a>
-                }
+                    @(Model.PhoneNumber ?? "None")
+                    @if (Model.PhoneNumber != null)
+                    {
+                        <br />
+                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn btn-primary btn-bracketed">Change</a>
+                        <form asp-controller="Manage" asp-action="RemovePhoneNumber" method="post">
+                            [<button type="submit" class="btn btn-link btn-primary">Remove</button>]
+                        </form>
+                    }
+                    else
+                    {
+                        <a asp-controller="Manage" asp-action="AddPhoneNumber" class="btn btn-primary btn-bracketed">Add</a>
+                    }
 
+                </div>
             </div>
-        </div>
 
-        <div class="form-group">
-            <label class="col-sm-3 control-label ">Two-Factor Authentication</label>
-            <div class="col-sm-4">
-                <p>
-                    There are no two-factor authentication providers configured.
-                </p>
-                @if (Model.TwoFactor)
-                {
-                    <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
-                        Enabled <button type="submit" class="btn btn-link btn-bracketed">Disable</button>
-                    </form>
-                }
-                else
-                {
-                    <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
-                        <button type="submit" class="btn btn-link btn-bracketed btn-primary">Enable</button> Disabled
-                    </form>
-                }
+            <div class="form-group">
+                <label class="col-sm-3 control-label ">Two-Factor Authentication</label>
+                <div class="col-sm-4">
+                    <p>
+                        There are no two-factor authentication providers configured.
+                    </p>
+                    @if (Model.TwoFactor)
+                    {
+                        <form asp-controller="Manage" asp-action="DisableTwoFactorAuthentication" method="post" class="form-horizontal">
+                            Enabled <button type="submit" class="btn btn-link btn-bracketed">Disable</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <form asp-controller="Manage" asp-action="EnableTwoFactorAuthentication" method="post" class="form-horizontal">
+                            <button type="submit" class="btn btn-link btn-bracketed btn-primary">Enable</button> Disabled
+                        </form>
+                    }
 
 
+                </div>
             </div>
+
+
+
+
         </div>
+    </div>*@
+@*
+    @await Component.InvokeAsync("Profile")
+*@
 
 
 
+<div class="container">
 
-    </div>
-</div>*@
+    <div class="row">
+        <div class="col-xs-4 col-md-3">
+            <ul class="nav nav-tabs setting-menu">
+                <div class="setting-title">
+                    General Setting
+                </div>
 
+                <li class="active"><a href="#general">General</a></li>
+                <li><a href="#security">Security</a></li>
+                <li><a href="#privacy">Privacy</a></li>
+                <li><a href="#notification">Notifications</a></li>
 
-
-<div class="col-md-12">
-        <div class="nav-tabs-custom">
-            <!-- Nav tabs -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation"><a href="#general" class="tabNav" id="info" data-toggle="tab">General</a></li>
-                <li role="presentation"><a href="#security" class="tabNav" id="item" data-toggle="tab">Security</a></li>
             </ul>
-            <!-- Tab panes -->
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane" id="general">
-                    @await  Html.PartialAsync("_General")
+        </div>
+        <div class="col-xs-8 col-md-9">
+            <div class="tab-content setting-menu-detail">
+                <div id="general" class="tab-pane fade in active">
+                    <div class="setting-detail-title">
+                        General Settings
+                    </div>
+
+                    <div class="setting-detail">
+                        <ul class="setting-detail-detail">
+                            <li class="profilePicUpload">
+                                @*@await  Html.PartialAsync("_GeneralPartial", Model)*@
+                                @*@RenderPage("~/Views/Manage/GetUserInfo.cshtml")*@
+
+                                
+                                    <div>
+                                        <div>
+                                            <h5>Username: @Model.UserName<a asp-action="EditUserName">Edit</a></h5>
+                                        </div>
+                                        <div>
+                                            <h5>Email: @Model.Email</h5>
+                                        </div>
+                                        <div>
+                                            Password: <a asp-action="ChangePassword">Edit</a>
+                                        </div>
+                                        <div>
+                                            <h5>Phone Number: @Model.PhoneNumber</h5>
+                                        </div>
+                                        <div>
+                                            <h5>Name: @Model.FirstName @Model.LastName <a asp-action="EditName">Edit</a></h5>
+                                        </div>
+                                        @*<div>
+                                            <h5>Last Name: @Model.LastName</h5>
+                                        </div>*@
+                                        <div>
+                                            <h5>Date of Birth: @Model.DateOfBirth <a asp-action="EditDateOfBirth">Edit</a></h5>
+                                        </div>
+                                        <div>
+                                            <h5>Birth Country: @Model.BirthCountry <a asp-action="EditBirthCountry">Edit</a></h5>
+                                        </div>
+                                        <div>
+                                            <h5>Current Country: @Model.CurrentCountry <a asp-action="EditCurrentCountry">Edit</a></h5>
+                                        </div>
+                                    </div>
+                                
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <div role="tabpanel" class="tab-pane" id="general">
-                    @await Html.PartialAsync("_Security")
+                <div id="security" class="tab-pane fade">
+                    <div class="setting-detail-title">
+                        Security Settings
+                    </div>
+
+                    <div class="setting-detail">
+                        <ul class="setting-detail-detail">
+                            <li class="profilePicUpload">
+                                Security content here
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="privacy" class="tab-pane fade">
+                    <div class="setting-detail-title">
+                        Privacy Settings
+                    </div>
+
+                    <div class="setting-detail">
+                        <ul class="setting-detail-detail">
+                            <li class="profilePicUpload">
+                                Privacy content here
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div id="notification" class="tab-pane fade">
+                    <div class="setting-detail-title">
+                        Notifications Settings
+                    </div>
+
+                    <div class="setting-detail">
+                        <ul class="setting-detail-detail">
+                            <li class="profilePicUpload">
+                                notification content here
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
-    </div> 
-
-
 

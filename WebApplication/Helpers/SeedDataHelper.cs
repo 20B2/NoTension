@@ -53,7 +53,6 @@ namespace WebApplication.Helpers
 
                 foreach (var role in Roles)
                 {
-                    //await roleStore.CreateAsync(role);
                     await _roleManager.CreateAsync(role);
 
                 }
@@ -115,7 +114,7 @@ namespace WebApplication.Helpers
             }
 
 
-        }
+        }   
 
 
     }
