@@ -11,7 +11,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
-    [Route("admin/[controller]")]
+
     public class RoleStatusTypeMappingController : Controller
     {
         private IRoleStatusTypeMappingRepository _roleStatusTypeMapping;

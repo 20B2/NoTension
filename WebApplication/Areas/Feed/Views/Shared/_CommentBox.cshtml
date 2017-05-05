@@ -1,0 +1,24 @@
+﻿@model WebApplication.Infrastructure.ViewModels.FeedViewModels.CommentViewModel
+
+<form asp-area="Feed" asp-controller="Feed" asp-action="PublishComment" method="post">
+    <div class="row tn-post-row">
+        <input type="hidden" asp-for="StatusId" />
+        <div class="col-md-11">
+            <div class="tn-post-textarea">
+                <textarea asp-for="Text" class="tn-textarea" placeholder="Whats on your mind?">
+                        
+                        </textarea>
+
+                <span asp-validation-for="Text" class="text-danger"></span>
+            </div>
+        
+        </div>
+        
+    </div>
+    <ul class="tn-add-info">
+     
+        <li class="pull-right">
+            <button type="submit"> Post</button>
+        </li>
+    </ul>
+</form>

@@ -8,7 +8,9 @@ using System.Threading.Tasks;
 using WebApplication.Core.Domains;
 using WebApplication.Core.Domains.Feed;
 using WebApplication.Core.Domains.MessageTemplate;
+using WebApplication.Core.Domains.Positive;
 using WebApplication.Core.Domains.StatusType;
+using WebApplication.Core.Domains.Tech;
 using WebApplication.Identity;
 
 namespace WebApplication.Infrastructure
@@ -49,7 +51,7 @@ namespace WebApplication.Infrastructure
         }
         private IMongoCollection<MessageTemplate> _messageTemplateCollection;
 
-
+        
         public string StatusTypeCollectionName { get; set; } = $"Status Type";
 
         public virtual IMongoCollection<StatusType> StatusTypeCollection
@@ -82,6 +84,67 @@ namespace WebApplication.Infrastructure
             set { _roleStatusTypeMappingCollection = value; }
         }
         private IMongoCollection<RoleStatusTypeMapping> _roleStatusTypeMappingCollection;
+
+        #region techitem
+        public string TechItemCollectionName { get; set; } = $"TechItem";
+
+        public virtual IMongoCollection<TechItem> TechItemCollection
+        {
+            get
+            {
+                if (_techItemCollection == null)
+                {
+                    _techItemCollection = Database.GetCollection<TechItem>(TechItemCollectionName, CollectionSettings);
+                }
+                return _techItemCollection;
+            }
+            set { _techItemCollection = value; }
+        }
+        private IMongoCollection<TechItem> _techItemCollection;
+
+        #endregion
+
+
+        #region positiveItem
+        public string PositiveItemCollectionName { get; set; } = $"PositiveItem";
+
+        public virtual IMongoCollection<PositiveItem> PositiveItemCollection
+        {
+            get
+            {
+                if (_PositiveItemCollection == null)
+                {
+                    _PositiveItemCollection = Database.GetCollection<PositiveItem>(PositiveItemCollectionName, CollectionSettings);
+                }
+                return _PositiveItemCollection;
+            }
+            set { _PositiveItemCollection = value; }
+        }
+        private IMongoCollection<PositiveItem> _PositiveItemCollection;
+
+        #endregion
+
+        #region techntype
+        public string TechTypeCollectionName { get; set; } = $"Tech Type";
+
+        public virtual IMongoCollection<TechType> TechTypeCollection
+        {
+            get
+            {
+                if (_techTypeCollection == null)
+                {
+                    _techTypeCollection = Database.GetCollection<TechType>(TechTypeCollectionName, CollectionSettings);
+                }
+                return _techTypeCollection;
+            }
+            set { _techTypeCollection = value; }
+        }
+        private IMongoCollection<TechType> _techTypeCollection;
+
+        #endregion
+
+
+        
 
 
 

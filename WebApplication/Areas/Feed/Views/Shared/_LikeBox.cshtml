@@ -1,0 +1,8 @@
+﻿@using WebApplication.Infrastructure.ViewModels.FeedViewModels
+@model LikeViewModel
+
+
+<form asp-area="Feed" asp-controller="Feed" asp-action="IncrementLike" method="post">
+        <input type="hidden" asp-for="StatusId" />
+        <button type="submit"> Like</button>   
+</form>

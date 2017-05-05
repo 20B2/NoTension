@@ -16,8 +16,7 @@ namespace WebApplication.Areas.Feed.Controllers
 {
     [Authorize()]
     [Area("Feed")]
-    [Route("feed/[controller]")]
-    public class MyExpertController : Controller
+     public class MyExpertController : Controller
     {
         private readonly IStatusTypeRepository _statusTypeRepository;
         private readonly IFeedItemRepository _feedItemRepository;
@@ -66,7 +65,7 @@ namespace WebApplication.Areas.Feed.Controllers
 
         public async Task<IActionResult> MakeSuggestion(string id)
         {
-            var feedItem = await _feedItemRepository.Get(id);
+            var feedItem = _feedItemRepository.Get(id);
            
             return RedirectToAction("Index");
         }
@@ -74,7 +73,7 @@ namespace WebApplication.Areas.Feed.Controllers
         [HttpPost]
         public async Task<IActionResult> MakeSuggestion(string id,Suggestion suggestion)
         {
-            var feedItem = await _feedItemRepository.Get(id);
+            var feedItem = _feedItemRepository.Get(id);
 
            // await _feedItemRepository.Suggestion();
 
@@ -83,7 +82,7 @@ namespace WebApplication.Areas.Feed.Controllers
 
         public async Task<IActionResult> PreciseText(string id)
         {
-            var feedItem = await _feedItemRepository.Get(id);
+            var feedItem = _feedItemRepository.Get(id);
 
             return RedirectToAction("Index");
         }

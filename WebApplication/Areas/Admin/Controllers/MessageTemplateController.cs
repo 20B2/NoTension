@@ -8,7 +8,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Authorize(Roles = "Admin")]
     [Area("Admin")]
-    [Route("admin/[controller]")]
+ 
     public class MessageTemplateController : Controller
     {
         public MessageTemplateController(IMessageRepository messageRepository)

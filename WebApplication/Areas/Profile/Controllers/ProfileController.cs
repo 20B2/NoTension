@@ -19,8 +19,7 @@ namespace WebApplication.Areas.Profile.Controllers
 {
     [Authorize]
     [Area("Profile")]
-    [Route("profile/[controller]")]
-    public class ProfileController : Controller
+   public class ProfileController : Controller
     {
         private readonly IHostingEnvironment _environment;
         private readonly UserStore<IdentityUser, IdentityRole> _users;

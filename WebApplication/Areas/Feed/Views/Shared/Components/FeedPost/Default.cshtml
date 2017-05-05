@@ -1,36 +1,5 @@
 ﻿@model WebApplication.Infrastructure.ViewModels.FeedViewModels.FeedPostViewModel
 
-@*<form asp-area="Feed" asp-controller="Feed" asp-action="PublishedPost" method="post">
-    <div class="form-horizontal">
-        <hr />
-        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-        <div class="form-group">
-            <label asp-for="Text" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="StatusType" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="StatusType" asp-items="@(new SelectList(@ViewBag.StatusType,"Id","TypeName") )"></select>
-                <span asp-validation-for="StatusType" class="text-danger"></span>
-            </div>
-        </div>
-          
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-</form>*@
-
-
-
-
 <div class="container">
     <div class="row">
         <div class="col-md-3"></div>

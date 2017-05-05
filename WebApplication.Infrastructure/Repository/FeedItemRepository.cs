@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using AutoMapper;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,16 +11,18 @@ namespace WebApplication.Infrastructure.Repository
 {
     public class FeedItemRepository : IFeedItemRepository
     {
-        protected readonly ApplicationDbContext _context;
-        public FeedItemRepository(ApplicationDbContext context)
+        private readonly ApplicationDbContext _context;
+        private readonly IMapper _mapper;
+
+        public FeedItemRepository(ApplicationDbContext context,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
-        public async Task<FeedItem> Get(string _id)
+        public FeedItem Get(string _id)
         {
-
-            return await _context.FeedItemCollection.FindSync<FeedItem>(x => x.Id == _id).SingleAsync();
+            return _context.FeedItemCollection.Find(x => x.Id == _id).FirstOrDefault();
         }
 
         public async Task Save(FeedItem item)
@@ -46,11 +49,12 @@ namespace WebApplication.Infrastructure.Repository
 
         public void IncrementLike(Like model)
         {
-
-            //var filter = Builders<FeedItem>.Filter.Eq(x =>x.Likes, model);
-            //var update = Builders<FeedItem>.Update.Push(x => x.Likes, model);
-
-            //_context.FeedItemCollection.UpdateOneAsync(filter, update);
+            var status= Get(model.StatusId);
+            
+            var filter = Builders<FeedItem>.Filter.Eq(x => x.Id, model.StatusId);
+            var update = Builders<FeedItem>.Update.Push(x => x.Likes, model);
+            
+            _context.FeedItemCollection.UpdateOneAsync(filter, update);
         }
 
         public void DecrementLike(Like model)
@@ -60,10 +64,11 @@ namespace WebApplication.Infrastructure.Repository
 
         public void PublishComment(Comment model)
         {
-            var filter = Builders<FeedItem>.Filter.Eq(x => x.Id, model.Id);
+            var filter = Builders<FeedItem>.Filter.Eq(x => x.Id, model.StatusId);
             var update = Builders<FeedItem>.Update.Push(x => x.Comments, model);
+            var updateOptions = new UpdateOptions { IsUpsert = true };
 
-            _context.FeedItemCollection.UpdateOneAsync(filter, update);
+            _context.FeedItemCollection.UpdateOne(filter, update);
         }
 
         public void DePublishComment(object model)
@@ -76,7 +81,7 @@ namespace WebApplication.Infrastructure.Repository
             if (string.IsNullOrWhiteSpace(statusId)) await Task.FromResult((Comment)null);
 
             var status = Get(statusId);
-            var result = status.Result.Comments.ToList();
+            var result = status.Comments.ToList();
 
             return result;
 

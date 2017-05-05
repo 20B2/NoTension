@@ -1,20 +1,12 @@
-﻿@model List<WebApplication.Core.Domains.Feed.Comment>
-
-
-@foreach (var item in Model)
-{
-   <span>Comment Setion here</span>
-    <ul class="comments">
+﻿
+@model WebApplication.Core.Domains.Feed.Comment
+      <ul class="comments">
         <div class="comments-box">
-            <li class="tn-cmt-name">@item.UserId</li>
+            <li class="tn-cmt-name"></li>
             <li class="tn-cmt">
                 
-              @item.Text  
+              @Model.Text 
             </li>
         </div>
-
-    </ul>
-
-
-}
-
+        </ul>
+@Model.Text

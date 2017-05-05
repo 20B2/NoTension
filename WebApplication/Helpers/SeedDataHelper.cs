@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using WebApplication.Core.Domains;
 using WebApplication.Core.Domains.MessageTemplate;
 using WebApplication.Core.Domains.StatusType;
+using WebApplication.Core.Domains.Tech;
 using WebApplication.Identity;
 using WebApplication.Infrastructure;
 
@@ -83,6 +84,25 @@ namespace WebApplication.Helpers
                 await _context.StatusTypeCollection.InsertManyAsync(types);
 
             }
+
+
+            if ((_context.TechTypeCollection.Count("{}") == 0) == true)
+            {
+                var types = new List<TechType>()
+                {
+                    new TechType{  Name=$".NET Technologies"},
+                    new TechType{  Name=$"Python"},
+                    new TechType{  Name=$"CSS"},
+                    new TechType{  Name=$"Angular"},
+                    new TechType{  Name=$"JavaScript"},
+                    new TechType{  Name=$"HTML"},
+                    new TechType{  Name=$"Java"}
+                };
+
+                await _context.TechTypeCollection.InsertManyAsync(types);
+
+            }
+
 
             if ((_context.MessageTemplateCollection.Count("{}") == 0) == true)
             {

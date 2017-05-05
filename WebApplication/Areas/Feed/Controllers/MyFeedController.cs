@@ -10,7 +10,6 @@ namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
     [Authorize()]
-    [Route("[controller]")]
     public class MyFeedController : Controller
     {
         public IActionResult Index()

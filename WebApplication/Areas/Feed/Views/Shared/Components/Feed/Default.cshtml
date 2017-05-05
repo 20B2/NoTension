@@ -1,0 +1,11 @@
+﻿@using  WebApplication.Infrastructure.ViewModels.FeedViewModels
+@model List<FeedBoxViewModel>
+
+
+@foreach (var item in Model)
+{
+    @Html.Partial("_FeedVM", item.Feed)
+
+    @Html.Partial("_CommentBox", item.FeedComments)
+    @Html.Partial("_LikeBox",item.Likes)
+}

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using WebApplication.Core.Domains;
 using WebApplication.Core.Domains.Feed;
 using WebApplication.Identity;
+using WebApplication.Infrastructure.Extensions;
 using WebApplication.Infrastructure.Interface.Repository;
 using WebApplication.Infrastructure.Repository;
 using WebApplication.Infrastructure.Services;
@@ -20,7 +21,6 @@ namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
     [Authorize()]
-    //[Route("feed/[controller]")]
     public class FeedController : Controller
     {
         private readonly IStatusTypeRepository _statusTypeRepository;
@@ -51,7 +51,7 @@ namespace WebApplication.Areas.Feed.Controllers
         [HttpPost]
         public IActionResult PublishedPost(FeedPostViewModel model)
         {             
-             var feed = _mapper.Map<FeedPostViewModel,FeedItem>(model);
+            var feed = _mapper.Map<FeedPostViewModel,FeedItem>(model);
 
             feed.PublishedUserId = GetCurrentUserId();
             _feedItemRepository.Save(feed);
@@ -119,17 +119,17 @@ namespace WebApplication.Areas.Feed.Controllers
 
         }
    
-        public async Task<IActionResult> IncrementLike(FeedItem likeitem)
+        public  IActionResult IncrementLike(LikeViewModel likeitem)
         {           
-            var feed = await _feedItemRepository.Get(GetCurrentUserId()); //feedId
            
-            var model = _mapper.Map<FeedItem, Like>(likeitem);
+            var model = _mapper.Map<Like>(likeitem);
 
             model.UserId = GetCurrentUserId();
-            feed.Likes.Add(model);
+            model.StatusId = likeitem.Id;
+         
             _feedItemRepository.IncrementLike(model); // need to check already like or not
 
-            return View();
+            return RedirectToAction("Index") ;
         }
    
         public IActionResult DecrementLike(Like model)
@@ -142,13 +142,13 @@ namespace WebApplication.Areas.Feed.Controllers
 
 
         [HttpPost]
-        public IActionResult PublishComment(FeedItem model)
+        public IActionResult PublishComment(CommentViewModel model)
         {
             var comment = _mapper.Map<Comment>(model);
 
             comment.UserId = GetCurrentUserId();
             _feedItemRepository.PublishComment(comment);
-            return View();
+            return RedirectToAction("Index");
         }
  
         public IActionResult DePublishComment(string id)
@@ -183,7 +183,7 @@ namespace WebApplication.Areas.Feed.Controllers
                 return NotFound();
             }
 
-            var feedItem =await _feedItemRepository.Get(id);
+            var feedItem =_feedItemRepository.Get(id);
             if (feedItem == null)
             {
                 return NotFound();
@@ -224,7 +224,7 @@ namespace WebApplication.Areas.Feed.Controllers
                 return NotFound();
             }
 
-            var feedItem = await  _feedItemRepository.Get(id);
+            var feedItem =  _feedItemRepository.Get(id);
             if (feedItem == null)
             {
                 return NotFound();
@@ -237,7 +237,7 @@ namespace WebApplication.Areas.Feed.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(string id)
         {
-            var feedItem = await _feedItemRepository.Get(id);
+            var feedItem = _feedItemRepository.Get(id);
             await _feedItemRepository.Delete(feedItem);
 
             return RedirectToAction("Index");

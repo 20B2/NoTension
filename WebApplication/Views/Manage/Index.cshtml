@@ -1,4 +1,4 @@
-﻿@using WebApplication.Infrastructure.ViewModels.ManageViewModels
+﻿@*@using WebApplication.Infrastructure.ViewModels.ManageViewModels
 @model IndexViewModel
 
 @{
@@ -86,4 +86,26 @@
     </div>
 </div>*@
 
-@await Component.InvokeAsync("Profile")
+
+
+<div class="col-md-12">
+        <div class="nav-tabs-custom">
+            <!-- Nav tabs -->
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation"><a href="#general" class="tabNav" id="info" data-toggle="tab">General</a></li>
+                <li role="presentation"><a href="#security" class="tabNav" id="item" data-toggle="tab">Security</a></li>
+            </ul>
+            <!-- Tab panes -->
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane" id="general">
+                    @await  Html.PartialAsync("_General")
+                </div>
+                <div role="tabpanel" class="tab-pane" id="general">
+                    @await Html.PartialAsync("_Security")
+                </div>
+            </div>
+        </div>
+    </div> 
+
+
+

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace WebApplication.Core.Domains.Feed
 {
+    [BsonIgnoreExtraElements]
     public class FeedItem : BaseEntity
     {
         public bool IsPublished { get; set; } = true;
@@ -29,14 +30,14 @@ namespace WebApplication.Core.Domains.Feed
         public byte[] Image { get; set; }
 
         [BsonIgnoreIfNull]
-        public virtual IList<Comment> Comments
+        public virtual List<Comment> Comments
             {
                 get { return _comments;
                 }
                 set { _comments = value ?? new List<Comment>();
                 }
             }
-        private IList<Comment> _comments = new List<Comment>();
+        private List<Comment> _comments = new List<Comment>();
         
         [BsonIgnoreIfNull]
         public virtual IList<Like> Likes
@@ -57,21 +58,7 @@ namespace WebApplication.Core.Domains.Feed
         public string PreciseTextByUserId { get; set; }
         //public List<PreciseHistory> History { get; set; }
 
-
-        public int LikesCounts { get { return _likes.Count(); } }
         
-        public int CommentsCounts{ get { return _comments.Count();} }
-
-
-        public string UpdatedAgo { get { return ((DateTimeOffset.Now) - (PublishedDate)).ToString(); } }
-
-        //public bool IsLikedByMe()
-        //{
-        //    (Likes.Contains(Like)) ? true : false;
-                    
-
-        //}
-
 
     }
 }

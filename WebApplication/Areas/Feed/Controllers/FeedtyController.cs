@@ -15,7 +15,6 @@ namespace WebApplication.Areas.Feed.Controllers
 {
     [Area("Feed")]
     [Authorize()]
-    [Route("[controller]")]
     public class FeedItemsController : Controller
     {
         private readonly IFeedItemRepository _feedItemService;

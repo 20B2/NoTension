@@ -16,10 +16,16 @@ namespace WebApplication.Helpers
     {
         public MappingProfile()
         {
-            CreateMap<FeedItem, FeedBoxViewModel>();
-            CreateMap<FeedItem, FeedPostViewModel>();
-            CreateMap<FeedItem, IndexViewModel>();
-            CreateMap<FeedItem, Comment>();
+            CreateMap<FeedItem, FeedBoxViewModel>().ReverseMap();
+            CreateMap<FeedItem, FeedPostViewModel>().ReverseMap();
+            CreateMap<FeedItem, IndexViewModel>().ReverseMap();
+            CreateMap<FeedItem, Comment>().ReverseMap();
+            CreateMap<CommentViewModel, Comment>().ReverseMap();
+            CreateMap<FeedItem, Like>().ReverseMap();
+            CreateMap<Like, LikeViewModel>().ReverseMap();
+           
+
+
             CreateMap<FeedPostViewModel, FeedItem>().ReverseMap();
             CreateMap<IdentityUser, UserViewModel>();
             CreateMap<IdentityRole, RoleViewModel>();

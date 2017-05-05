@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WebApplication.Infrastructure.Interface.Repository;
 using WebApplication.Infrastructure.Services;
+using WebApplication.Infrastructure.ViewModels.FeedViewModels;
 
 namespace WebApplication.Areas.Feed.ViewComponents.Feed
 {
@@ -15,7 +16,6 @@ namespace WebApplication.Areas.Feed.ViewComponents.Feed
 
         public IViewComponentResult Invoke()
         {
-            
             return View();
         }
     }

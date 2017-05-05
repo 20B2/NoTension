@@ -13,7 +13,7 @@ namespace WebApplication.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    [Route("admin/[controller]")]
+
     public class StatusTypeController : Controller
     {
       private readonly IStatusTypeRepository _statusTypeRepository;

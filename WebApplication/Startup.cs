@@ -30,6 +30,7 @@ using WebApplication.Helpers;
 using NLog.Extensions.Logging;
 using NLog.Web;
 using Microsoft.AspNetCore.Mvc;
+using WebApplication.Infrastructure.Extensions;
 
 namespace WebApplication
 {
@@ -87,7 +88,10 @@ namespace WebApplication
             services.AddSingleton<SeedDataHelper>();
             services.AddSingleton<IProfileSettingViewModelService, ProfileSettingViewModelService>();
             services.AddSingleton<IRoleStatusTypeMappingRepository, RoleStatusTypeMappingRepository>();
-            
+
+
+            services.AddSingleton<IPositiveItemRepository, PositiveItemRepository>();
+            services.AddSingleton<ITechItemRepository, TechItemRepository>();
 
             services.AddMvc();
 
@@ -184,6 +188,7 @@ namespace WebApplication
             //        await next();
             //    }
             //});
+           // app.UseCustomRewriter();
 
             app.UseMvc(routes =>
             {
