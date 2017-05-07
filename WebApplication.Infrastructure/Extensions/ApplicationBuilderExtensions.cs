@@ -10,13 +10,14 @@ namespace WebApplication.Infrastructure.Extensions
 {
     public static class ApplicationBuilderExtensions
     {
-        //public static IApplicationBuilder UseCustomRewriter(this IApplicationBuilder app)
-        //{
-        //    var options = new RewriteOptions()
-        //        .AddRedirectToHttpsPermanent();
-        //       // .AddRedirectToHttps("(.*)/$", "$1");
+        public static IApplicationBuilder UseCustomRewriter(this IApplicationBuilder app)
+        {
+            var options = new RewriteOptions()
+                 .AddRedirect("^(www\\.)(.*)", "$2");
+            
 
-        //    return app.UseRewriter(options);
-        //}
+
+            return app.UseRewriter(options);
+        }
     }
 }

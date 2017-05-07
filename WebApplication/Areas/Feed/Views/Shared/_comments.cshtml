@@ -1,12 +1,9 @@
 ﻿
 @model WebApplication.Core.Domains.Feed.Comment
-      <ul class="comments">
-        <div class="comments-box">
-            <li class="tn-cmt-name"></li>
-            <li class="tn-cmt">
-                
-              @Model.Text 
-            </li>
+      <li class="comments-box">
+        <div class="tn-cmt-name">@Model.StatusId</div>
+        <div class="tn-cmt">
+
+            @Model.Text
         </div>
-        </ul>
-@Model.Text
+    </li>

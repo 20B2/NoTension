@@ -48,7 +48,7 @@ namespace WebApplication
 
             _env = env;
             MapperConfiguration = new MapperConfiguration(cfg =>
-            {
+            {   
                 cfg.AddProfile(new MappingProfile());
             });
 
@@ -188,7 +188,7 @@ namespace WebApplication
             //        await next();
             //    }
             //});
-           // app.UseCustomRewriter();
+            app.UseCustomRewriter();
 
             app.UseMvc(routes =>
             {
@@ -205,32 +205,18 @@ namespace WebApplication
                 routes.MapRoute(
                     name: "feed",
                     template: "feed/{action}/{id?}",
-                    defaults: new {area="Feed",  controller = "Feed", action = "Index" });
+                    defaults: new { area = "Feed", controller = "Feed", action = "Index" });
 
                 routes.MapRoute(
-                name: "admin",
-                template: "admin/{action}/{id?}",
-                defaults: new { area = "Admin", controller = "Dashboard", action = "Index" });
+                   name: "profile",
+                   template: "profile/{action}/{id?}",
+                   defaults: new { area = "profile", controller = "profile", action = "Index" });
 
+                routes.MapRoute(
+                   name: "admin",
+                   template: "admin/{action}/{id?}",
+                   defaults: new { area = "Admin", controller = "Dashboard", action = "Index" });
 
-                //routes.MapRoute(
-                //     name: "api",
-                //     template: "api/{controller=Home}/{action=Index}/{id?}");
-
-                //routes.MapRoute(
-                //     name: "feed",
-                //     template: "feed/{controller}/{action}",
-                //     defaults: new { controller = "Feed", action = "Index" });
-
-                //routes.MapRoute(
-                //     name: "admin",
-                //     template: "admin/{controller}/{action}/{id?}",
-                //     defaults: new { controller = "Dashboard", action = "Index" });
-
-                //routes.MapRoute(
-                //     name: "profile",
-                //     template: "profile/{controller}/{action}",
-                //     defaults: new { controller = "Profile", action = "Index" });
 
             });
         }

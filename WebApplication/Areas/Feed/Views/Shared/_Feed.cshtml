@@ -1,22 +1,22 @@
-﻿@using WebApplication.Infrastructure.ViewModels.FeedViewModels
+﻿@using WebApplication.Infrastructure.Extensions
+@using WebApplication.Infrastructure.ViewModels.FeedViewModels
 @model FeedViewModel
+
 <div class="row">
     <div class="col-md-3"></div>
-    <div class="col-md-6">
+    <div class="col-md-6" id="tn-feedbox">
         <div class="row tn-feed-row">
             <ul class="tn-feed-data list-inline">
-                @*<li>
-                        <a asp-action="Edit" asp-route-id="Id">Edit</a> |
-                        <a asp-action="Details" asp-route-id="@Model.Feed">Details</a> |
-                        <a asp-action="Delete" asp-route-id="@Model.Feed">Delete</a>
-                    </li>*@
+                <li>
+                    <a asp-action="Edit" asp-route-id="Id">Edit</a>
+
                 <li>
 
                     @Model.StatusType
                 </li>
                 <div class="pull-right">
                     <li>
-                        @Model.UpdatedAgo
+                        @Model.PublishedDate.TimeAgo()
                     </li>
 
                 </div>
@@ -39,28 +39,34 @@
 
         <ul class="tn-feed-data-footer list-inline">
             <li>
+
                 <span>
-                  
-                    @Model.Likes  Likes
+                    Likes
+                    @Model.Likes
                 </span>
             </li>
 
-           @foreach(var item in Model.Comments)
-           {
 
-               @Html.Partial("_comments",item)
-               
-
-           }
 
             <li>
-
-                @Model.CommentsCounts Comments || @Model.Comments.Count.ToString()
-
-                @Model.UpdatedAgo 
+                <div class="comment">
+                    Comment
+                    <span>
+                        @Model.CommentsCounts
+                    </span>
+                </div>
             </li>
-
         </ul>
-    </div>
-    <div class="col-md-3"></div>
-</div>
+        <ul class="comments">
+            @foreach (var item in Model.Comments)
+            {
+
+                @Html.Partial("_comments", item)
+
+
+
+            }
+
+
+
+
